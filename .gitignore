@@ -27,10 +27,18 @@ tmp/
 *.log
 .chart-data-*/
 
-# Superseded presentation drafts stay local; keep the latest reviewed package.
-submission/5C2_pitch_draft*.pdf
-submission/5C2_pitch_draft*.pptx
-!submission/5C2_pitch_draft_v9.pdf
-!submission/5C2_pitch_draft_v9.pptx
-submission/5C2_rubric_brief_v*.pptx
-!submission/5C2_rubric_brief_v9.pptx
+# Working documents and drafts remain local; keep the submission-focused repository.
+docs/*
+!docs/architecture.png
+!docs/architecture.mmd
+!docs/render_architecture.py
+reports/*
+!reports/data_quality.md
+# Required by trained_llm.py to validate the optional adapter's provenance.
+!reports/llm_training.json
+!reports/llm_adapter_test.json
+submission/*
+!submission/benchmark_answers.csv
+Build Phase/
+System Design Phase/
+collection hackathon.pdf
