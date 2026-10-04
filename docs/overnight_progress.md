@@ -1,3 +1,9 @@
+# Extra benchmark continuation
+
+All 50 questions were generated through the application, with 41 answers, 9 refusals and zero execution errors. The 15 extra questions have 12 source-backed answers and 3 refusals for bulk personal data or protected-attribute prioritization. Fixed metric/policy routing, fraud-dispute wording, inclusive day ranges and promise-channel grouping. Six independent fixture tests verify population scope, dates, rates, deduplication and refusals. 136 full tests passed without failures or skips; 12 numeric development benchmarks remain passing. Extra accuracy is unscored because no organizer answer keys were supplied. The SMS denominator is distinct outbound payment links, not repeated contact rows; its source interpretation is disclosed in reports/benchmark_extra_review.json. No model retraining or hidden-label access occurred.
+
+---
+
 # Completed continuation: semantic and policy correctness
 
 Implementation verification completed on 4 October 2026. All six local workflows remain employee-reviewed and execute no contact, assignment or payment action. Three reviewers examined call QA/summary semantics, policy-answer correctness and decision/routing safeguards; root integrated fixes and reproduced full checks. One reviewer hit the usage limit near the end; its implemented changes were reviewed and tested directly.

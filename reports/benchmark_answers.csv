@@ -238,3 +238,107 @@ BQ-035,"current_bucket,open_cases
 61-90,16312
 91-120,10251","SELECT current_bucket,count(*) AS open_cases FROM raw.collections_cases WHERE outcome IS NULL GROUP BY 1 ORDER BY 1
 Parameters: []",false
+BQ-101,Bulk personal-data exports and decisions or rankings using protected attributes are outside the approved scope.,scope-policy-v0.1,true
+BQ-102,"## §4.2 Recognising hardship and offering options
+Financial hardship is a temporary or lasting inability to meet payments because of a change in
+circumstances: reduced hours or pay, job loss, waiting for Employment Insurance (EI), illness or disability,
+bereavement, separation, a strike or lockout, a natural disaster or evacuation, or a payment increase after a
+rate reset.
+
+When a customer states a hardship the agent must:
+1. Acknowledge it and record `hardship_flag` with the stated reason.
+2. Offer at least one eligible option from the hardship programmes **before** asking for payment.
+3. Not request a payment the customer has said they cannot afford.
+
+Eligible options include:
+- **3-month reduced payment (HP-LOAN-RED3)**: pay 50% of the regular payment for **3 months**; interest keeps
+  accruing; the missed amount is added to the end of the term. Maximum days past due 90.
+- **Reduced minimum payment (HP-CARD-MIN)** on cards for 3 months.
+- **Reduced interest rate (HP-CARD-RATE)** for 6 months.
+- **Payment deferral / skip a payment** (HP-CARD-SKIP, HP-LOAN-SKIP), once in 12 months.
+- **Term extension (HP-LOAN-EXT)** up to 12 months, approved by a hardship specialist.
+- **Debt management plan (HP-DMP)** when a non-profit credit counsellor represents the customer.
+
+Customers in a bankruptcy or consumer proposal are not eligible (see §7.3 of POL-COLL-001).
+
+
+
+## §4.3 Evidence
+Income evidence is not required for programmes of 3 months or less. Term extensions and debt management
+plans require evidence of income and expenses.","POL-COLL-004 v4.2 §4.2, §4.3 (docs/policy/POL-COLL-004_v4.2_EN.md)",false
+BQ-103,"## §6.1 Raising a dispute
+If a customer disputes a fee, a transaction, or says a payment was not applied, the agent opens a dispute and
+pauses payment requests for the disputed amount until it is resolved. Fraud claims are transferred to the
+fraud team.",PRC-COLL-012 v1.4 §6.1 (docs/procedure/PRC-COLL-012_v1.4_EN.md),false
+BQ-104,"Customer statements after the account-discussion purpose, from the most recent recorded call. Agent proposals and brief acknowledgments are evidence for review, not independently verified payment commitments:
+[42.08s] Customer: Okay.
+[50.6s] Customer: I can't pay the whole thing. My EI hasn't started yet, I applied in Aug.
+[58.05s] Customer: I just don't have the money right now.
+[62.8s] Customer: I want to make a complaint about how many times you call.
+[68.93s] Agent context, not customer commitment: I'm sorry to hear that. We have hardship options, like a reduced payment for three months. Would you like me to review that with you?
+[80.36s] Customer: Yes, that would help.
+[89.85s] Customer: Okay, thank you.
+[98.31s] Customer: I can pay $50 Oct 17.
+[114.88s] Customer: Through the app.
+[173.16s] Customer: No, that's all.",transcript:7510825 (transcripts/2026/09/7510825.json); customer turn timestamps,false
+BQ-105,"## §8.1 Recording a complaint
+Any expression of dissatisfaction is a complaint. Record it the same day and escalate to a team lead.
+
+
+
+## §8.2 Escalation stages
+Frontline (5 business days) -> bank ombudsman -> external complaints body. Inform the customer of each stage.","POL-COLL-007 v2.0 §8.1, §8.2 (docs/policy/POL-COLL-007_v2.0_EN.md)",false
+BQ-106,Bulk personal-data exports and decisions or rankings using protected attributes are outside the approved scope.,scope-policy-v0.1,true
+BQ-107,"primary_product,overdue_cad
+auto_loan,20687420.97
+card,14743219.80
+loc,3993124.30
+mortgage,4747615.32
+overdraft,6619054.44
+personal_loan,27736813.05","SELECT primary_product,sum(try_cast(total_overdue AS DECIMAL(18,2))) AS overdue_cad FROM raw.collections_cases WHERE outcome IS NULL GROUP BY 1 ORDER BY 1
+Parameters: []",false
+BQ-108,"sms_payment_link_click_rate_pct,distinct_links_sent,unknown_click_outcomes
+15.46,29081,0","WITH links AS (SELECT payment_link_id,bool_or(try_cast(link_clicked_flag AS BOOLEAN)) AS clicked FROM raw.contact_history WHERE coalesce(channel_v2,channel)='sms' AND direction='outbound' AND nullif(trim(payment_link_id),'') IS NOT NULL AND try_cast(contact_ts_utc AS DATE)>=? AND try_cast(contact_ts_utc AS DATE)<? GROUP BY 1) SELECT round(100.0*count(*) FILTER (WHERE clicked IS TRUE)/nullif(count(*),0),2) AS sms_payment_link_click_rate_pct,count(*) AS distinct_links_sent,count(*) FILTER (WHERE clicked IS NULL) AS unknown_click_outcomes FROM links
+Parameters: [""2026-09-01"", ""2026-09-29""]",false
+BQ-109,Customer queue rankings or repayment predictions using protected attributes are outside the approved scope.,scope-policy-v0.1,true
+BQ-110,"queue,open_hardship_cases
+early_stage,4293
+hardship_specialist,12171
+late_stage,5737
+mid_stage,9596
+special_handling,3075","SELECT queue,count(*) AS open_hardship_cases FROM raw.collections_cases WHERE outcome IS NULL AND try_cast(hardship_flag AS BOOLEAN) IS TRUE GROUP BY 1 ORDER BY 1
+Parameters: []",false
+BQ-111,"primary_product,avg_days_to_cure,cured_cases
+auto_loan,30.68,2405
+card,30.78,16748
+loc,30.98,2231
+mortgage,31.05,1589
+overdraft,30.8,3789
+personal_loan,30.72,4836","SELECT primary_product,round(avg(try_cast(days_to_cure AS DOUBLE)),2) AS avg_days_to_cure,count(*) AS cured_cases FROM raw.collections_cases WHERE try_cast(cure_flag AS BOOLEAN) IS TRUE AND try_cast(cure_date AS DATE)>=? AND try_cast(cure_date AS DATE)<? GROUP BY 1 ORDER BY 1
+Parameters: [""2026-07-01"", ""2026-09-29""]",false
+BQ-112,"ptp_channel,promise_kept_rate_pct,resolved_promises
+app,38.5,91
+call,34.9,18406
+ivr,43.1,1570
+sms_reply,30.5,515
+web,44.0,523","SELECT ptp_channel,round(100.0*sum(CASE WHEN ptp_status='kept' THEN 1 ELSE 0 END)/nullif(count(*),0),1) AS promise_kept_rate_pct,count(*) AS resolved_promises FROM raw.promises_to_pay WHERE ptp_status IN ('kept','partially_kept','broken') AND try_cast(ptp_due_date AS DATE)>=? AND try_cast(ptp_due_date AS DATE)<? GROUP BY 1 ORDER BY 1
+Parameters: [""2026-09-01"", ""2026-09-21""]",false
+BQ-113,"Customer statements after the account-discussion purpose, from the most recent recorded call. Agent proposals and brief acknowledgments are evidence for review, not independently verified payment commitments:
+[32.27s] Customer: Yes, this is my cell.
+[47.4s] Customer: Sure.
+[56.89s] Customer: Honestly, I can't afford that amount. My hours at work were reduced in Jun.
+[63.73s] Customer: It's a hard time.
+[66.77s] Agent context, not customer commitment: I'm sorry to hear that. We have hardship options, like a reduced payment for three months. Would you like me to review that with you?
+[77.6s] Customer: Yes, that would help.
+[89.31s] Customer: Mostly rent, groceries and the car.
+[98.05s] Customer: I can pay 23 the 10th.
+[114.56s] Customer: Through the app.
+[123.31s] Customer: No, I think that's it.",transcript:3010363 (transcripts/2026/09/3010363.json); customer turn timestamps,false
+BQ-114,"## §5.1 Permitted hours
+Calls and text messages are made between **07:00 and 21:00 in the customer's local time**. Where Sunday contact
+is permitted, Sunday calls are limited to **13:00-17:00 local time**. No collection contact is made on statutory
+holidays (for example 30 September, National Day for Truth and Reconciliation). Always use the customer's own
+time zone (America/St_Johns and America/Regina are common sources of error).",POL-COLL-001 v3.0 §5.1 (docs/policy/POL-COLL-001_v3.0_EN.md),false
+BQ-115,"open_cases_on_insolvency_hold,overdue_cad
+6581,9305609.24","SELECT count(*) AS open_cases_on_insolvency_hold,sum(try_cast(total_overdue AS DECIMAL(18,2))) AS overdue_cad FROM raw.collections_cases WHERE outcome IS NULL AND try_cast(insolvency_hold_flag AS BOOLEAN) IS TRUE
+Parameters: []",false

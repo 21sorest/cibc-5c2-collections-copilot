@@ -13,7 +13,7 @@ The local app is available at http://127.0.0.1:8501 while Streamlit is running. 
 
 ## Items requiring the user
 
-1. Send the final rubric and extra benchmark CSV. The runner accepts --extra and must generate answers through code.
+1. Send the final rubric. The extra benchmark CSV is now incorporated; the runner accepts --extra and generated all 50 answers/refusals through code.
 2. The private repository is connected and committed at https://github.com/21sorest/cibc-5c2-collections-copilot. The cibchack26 invitation is pending acceptance. Push final benchmark updates before the deadline.
 3. Upload data/c360_release to Hugging Face using the user's account and add the final link. The Parquet is only 8.3 MB and already has a checksum, contract and quality report.
 4. Review the prepared pitch PDF/PPTX, record a video of at most five minutes, and submit the form by 9 PM IST on 4 October 2026.

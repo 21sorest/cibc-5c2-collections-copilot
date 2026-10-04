@@ -8,7 +8,7 @@ The local prototype connects all four layers, with a team-trained text classifie
 | Customer contract | contracts/c360.json | Owner/team review before submission |
 | Feature registry and one serving definition | contracts/features.json, reports/features_summary.json | Historical training snapshots unsupported |
 | Structured and text signals | sql/features.sql, reports/text_evaluation.json | Improve remaining misses and validate independently |
-| Questions with SQL/sources and refusals | questions.py, reports/benchmark_answers.csv, reports/question_semantics.json | Broader semantic review and extra questions |
+| Questions with SQL/sources and refusals | questions.py, submission/benchmark_answers.csv, reports/question_semantics.json, reports/benchmark_extra_review.json | Broader semantic review and official scoring |
 | Layer 4 assistance and employee review | app.py, conversation.py, decisions.py, calls.py, assistant.py | Broader independent evaluation; optional paid API verification |
 | Local classifier | train_classifier.py, contracts/text_model.json, reports/classifier_evaluation.json | Hidden-test and short-utterance validation |
 | Local speech and generation | speech.py, local_llm.py, measured reports | Speaker attribution and semantic review |
@@ -22,3 +22,5 @@ The local prototype connects all four layers, with a team-trained text classifie
 | Generated C360 hosting | data/c360_release local export with checksum and contract | User-managed Hugging Face upload and final link |
 
 The supplied build instructions set the additional-question release to 4 October 2026 at 7 PM IST, with final submission at 9 PM IST. Benchmark answers must come from the application runner and must not be manually edited.
+
+Extra benchmark questions are now included. All 50 unique IDs are present in submission/benchmark_answers.csv; 41 answered, 9 refused, zero query errors. No official extra-answer accuracy score is available.

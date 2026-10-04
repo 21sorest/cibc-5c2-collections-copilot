@@ -34,6 +34,22 @@ def month_bounds(question):
     year=int(years[0]) if years else 2026
     if len(set(years))>1:
         raise ValueError('Multiple years are not supported by this catalogue')
+    # Explicit day ranges are inclusive; SQL uses an exclusive upper boundary.
+    names='|'.join(sorted(MONTHS,key=len,reverse=True))
+    same=re.search(r'between\s+(\d{1,2})\s+and\s+(\d{1,2})\s+('+names+r')\s+(20\d\d)',question)
+    cross=re.search(r'between\s+(\d{1,2})\s+('+names+r')\s+and\s+(\d{1,2})\s+('+names+r')\s+(20\d\d)',question)
+    if same:
+        start=date(int(same[4]),MONTHS[same[3]],int(same[1]))
+        end=date(int(same[4]),MONTHS[same[3]],int(same[2]))+timedelta(days=1)
+    elif cross:
+        start=date(int(cross[5]),MONTHS[cross[2]],int(cross[1]))
+        end=date(int(cross[5]),MONTHS[cross[4]],int(cross[3]))+timedelta(days=1)
+    else:
+        start=end=None
+    if start:
+        if end<=start:
+            raise ValueError('The requested date range is reversed.')
+        return start,end
     first,last=(min(found),max(found)) if found else (9,9)
     start=date(year,first,1)
     end=date(year+1,1,1) if last==12 else date(year,last+1,1)
@@ -180,7 +196,9 @@ def answer(con,question,release=DEFAULT_RELEASE,actor=None):
         return result
     if re.search(r'protected (?:attributes|grounds)',q) and re.search(r'policy|never|must not|should not|forbidden|not use',q) and not prohibited_policy_request:
         return policy_answer(con,'POL-COLL-004','§4.6',release,language)
-    if re.search(r'citizenship|gender|marital|newcomer|nationality|ethnicity|religion|disability|accessibility|\brace\b|\baccent\b|\bhousehold\b|\bby age\b|\bfsas?\b|postal areas|names and phone|export.*(?:name|phone|email)|\bdrop\s+(?:table|schema|database)|\bdelete\s+from|\binsert\s+into|\b(?:pragma|attach)\b|ignore.*instructions',q):
+    if re.search(r'vulnerab',q) and re.search(r'priorit|bottom|rank|repayment|predict|rarely pay|call queue',q):
+        return refused('Customer queue rankings or repayment predictions using protected attributes are outside the approved scope.')
+    if re.search(r'citizenship|gender|marital|newcomer|nationality|ethnicity|religion|church|date of birth|home address|phone number|disability|accessibility|\brace\b|\baccent\b|\bhousehold\b|\bby age\b|\bfsas?\b|postal areas|names and phone|export.*(?:name|phone|email)|\bdrop\s+(?:table|schema|database)|\bdelete\s+from|\binsert\s+into|\b(?:pragma|attach)\b|ignore.*instructions',q):
         return refused('Bulk personal-data exports and decisions or rankings using protected attributes are outside the approved scope.')
     if re.search(r'weather|\bsue\b|legal advice',q):
         return refused('This assistant supports collections data and supplied policies. It cannot provide weather forecasts or decide legal action.')
@@ -222,6 +240,20 @@ def answer(con,question,release=DEFAULT_RELEASE,actor=None):
         if re.search(SUBSET_FILTER,q) or re.search(r'\b(?:province|queue|bucket)\b|\b(?:with|having)\s+(?:incomplete|complete|partial|no)\b',q):
             return refused('Subset filters are unsupported for this C360 aggregate. No broader population was substituted.')
     # Catalogue defaults and source fields are explicit. No generated SQL is accepted.
+    if 'open' in q and re.search(r'total.*(?:amount )?overdue|how many.*hardship|how many.*insolvency',q):
+        if dated_period and not historical:
+            return refused('Historical open-case snapshots are unavailable; no current population was substituted.')
+        if 'insolvency' in q:
+            return run_sql("SELECT count(*) AS open_cases_on_insolvency_hold,sum(try_cast(total_overdue AS DECIMAL(18,2))) AS overdue_cad FROM raw.collections_cases WHERE outcome IS NULL AND try_cast(insolvency_hold_flag AS BOOLEAN) IS TRUE")
+        if 'hardship' in q and 'queue' in q:
+            return run_sql("SELECT queue,count(*) AS open_hardship_cases FROM raw.collections_cases WHERE outcome IS NULL AND try_cast(hardship_flag AS BOOLEAN) IS TRUE GROUP BY 1 ORDER BY 1")
+        if 'overdue' in q and 'product' in q:
+            return run_sql("SELECT primary_product,sum(try_cast(total_overdue AS DECIMAL(18,2))) AS overdue_cad FROM raw.collections_cases WHERE outcome IS NULL GROUP BY 1 ORDER BY 1")
+        return refused('The requested open-case grouping is unsupported; no broader population was substituted.')
+    if 'payment link' in q and 'sms' in q and re.search(r'clicked|click rate',q):
+        return run_sql("WITH links AS (SELECT payment_link_id,bool_or(try_cast(link_clicked_flag AS BOOLEAN)) AS clicked FROM raw.contact_history WHERE coalesce(channel_v2,channel)='sms' AND direction='outbound' AND nullif(trim(payment_link_id),'') IS NOT NULL AND try_cast(contact_ts_utc AS DATE)>=? AND try_cast(contact_ts_utc AS DATE)<? GROUP BY 1) SELECT round(100.0*count(*) FILTER (WHERE clicked IS TRUE)/nullif(count(*),0),2) AS sms_payment_link_click_rate_pct,count(*) AS distinct_links_sent,count(*) FILTER (WHERE clicked IS NULL) AS unknown_click_outcomes FROM links",[start,min(end,SNAPSHOT+timedelta(days=1))])
+    if 'cured' in q and re.search(r'average|mean',q) and 'days' in q and 'product' in q:
+        return run_sql("SELECT primary_product,round(avg(try_cast(days_to_cure AS DOUBLE)),2) AS avg_days_to_cure,count(*) AS cured_cases FROM raw.collections_cases WHERE try_cast(cure_flag AS BOOLEAN) IS TRUE AND try_cast(cure_date AS DATE)>=? AND try_cast(cure_date AS DATE)<? GROUP BY 1 ORDER BY 1",[start,min(end,SNAPSHOT+timedelta(days=1))])
     if re.search(r'financial coverage|incomplete.*coverage|matched.*coverage',q) and re.search(r'customer|c360',q):
         return run_sql('SELECT financial_coverage,count(*) AS customers FROM golden.c360 GROUP BY 1 ORDER BY 1')
     if re.search(r'how many.*golden customer|count.*c360 customer',q):
@@ -244,6 +276,8 @@ def answer(con,question,release=DEFAULT_RELEASE,actor=None):
     if re.search(r'broken.?promise.*previous|broken.?promise.*number',q):
         return run_sql("SELECT least(try_cast(prior_broken_ptp_count AS INTEGER),3) AS prior_broken,round(100.0*avg(CASE WHEN ptp_status='broken' THEN 1 ELSE 0 END),1) AS broken_rate_pct,count(*) AS promises FROM raw.promises_to_pay WHERE ptp_status IN ('kept','partially_kept','broken') GROUP BY 1 ORDER BY 1")
     if re.search(r'promise.?kept rate|promise.kept rate',q) and 'champion' not in q:
+        if re.search(r'by (?:the )?channel',q):
+            return run_sql("SELECT ptp_channel,round(100.0*sum(CASE WHEN ptp_status='kept' THEN 1 ELSE 0 END)/nullif(count(*),0),1) AS promise_kept_rate_pct,count(*) AS resolved_promises FROM raw.promises_to_pay WHERE ptp_status IN ('kept','partially_kept','broken') AND try_cast(ptp_due_date AS DATE)>=? AND try_cast(ptp_due_date AS DATE)<? GROUP BY 1 ORDER BY 1",[start,end])
         return run_sql("SELECT round(100.0*sum(CASE WHEN ptp_status='kept' THEN 1 ELSE 0 END)/nullif(count(*),0),1) AS promise_kept_rate_pct FROM raw.promises_to_pay WHERE ptp_status IN ('kept','partially_kept','broken') AND try_cast(ptp_due_date AS DATE)>=? AND try_cast(ptp_due_date AS DATE)<?",[start,end])
     if 'broken' in q and 'site' in q:
         return run_sql("SELECT coalesce(a.site,'self_serve') AS site,round(100.0*avg(CASE WHEN p.ptp_status='broken' THEN 1 ELSE 0 END),1) AS broken_rate_pct,count(*) AS promises FROM raw.promises_to_pay p LEFT JOIN raw.agents a ON p.agent_id=a.agent_id WHERE p.ptp_status IN ('kept','partially_kept','broken') AND try_cast(p.ptp_due_date AS DATE)>=? AND try_cast(p.ptp_due_date AS DATE)<? GROUP BY 1 ORDER BY 1",[start,min(end,SNAPSHOT+timedelta(days=1))])
@@ -297,7 +331,7 @@ def answer(con,question,release=DEFAULT_RELEASE,actor=None):
         return policy_answer(con,'POL-COLL-001','§5.3',release,language)
     if re.search(r'how many.*(?:attempt|call)|contact frequency',q):
         return policy_answer(con,'POL-COLL-001','§5.2',release,language)
-    if re.search(r'disput|payment.*not applied|fraud claim|late.fees?.*(?:bank|system).*incident',q):
+    if re.search(r'disput|payment.*not applied|fraud|late.fees?.*(?:bank|system).*incident',q):
         return policy_answer(con,'PRC-COLL-012','§6.2' if re.search(r'bank.*incident|system incident|late.fee.*incident',q) else '§6.1',release,language)
     if re.search(r'complaint|dissatisfaction|ombudsman',q):
         return policy_answer(con,'POL-COLL-007',('§8.1','§8.2'),release,language)
