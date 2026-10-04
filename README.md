@@ -16,6 +16,8 @@ The benchmark CSV contains all **50 released questions**, including the 15 extra
 
 The contract adapts release example `DC-COLL-001`. The architecture is a programmatic engineering diagram; its [source](docs/architecture.mmd) and [renderer](docs/render_architecture.py) are included. No image-generation model was used for it.
 
+Generated C360 dataset: [5C2 Collections C360 on Hugging Face](https://huggingface.co/datasets/21sorest/5c2-collections-c360/).
+
 Source datasets, model weights, credentials, working notes and presentation drafts are kept outside Git. The presentation PDF and demo video are separate form deliverables. Two model provenance reports remain because `trained_llm.py` reads their hashes to validate the optional fine-tuned adapter.
 
 ## Run locally
@@ -82,6 +84,6 @@ The base application uses deterministic assistance and the local classifier. Opt
 - LoRA: use a separate environment with `requirements-training.txt` and compatible CUDA hardware. Commands are `python train_llm.py prepare --robust`, `python train_llm.py download`, `python train_llm.py train`, and `python train_llm.py evaluate --adapter --split test --limit 0`. Training and evaluation code preserves grouped splits; do not tune on final-test outputs. The adapter is available only when its model, corpus, prompt and result provenance agree.
 - Paid drafting: copy `.env.example` to ignored `.env`, configure your own API key/model and authorize costs before using the paid button. It sends scoped financial facts to the provider; no credentials or dataset files belong in Git.
 
-## C360 export
+## C360 dataset and export
 
-Run `python export_c360.py` to create `data/c360_release/` with the compressed C360, checksum manifest, contract, quality report and dataset card. This command does not upload anything. The hosted C360 link is pending user-managed Hugging Face publication.
+Run `python export_c360.py` to create `data/c360_release/` with the compressed C360, checksum manifest, contract, quality report and dataset card. This command does not upload anything. The team-hosted C360 is available at [5C2 Collections C360](https://huggingface.co/datasets/21sorest/5c2-collections-c360/).
