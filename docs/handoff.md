@@ -22,11 +22,11 @@ The local app is available at http://127.0.0.1:8501 while Streamlit is running. 
 
 ## Submission files
 
-README.md; docs/architecture.png; contracts/c360.json; reports/data_quality.md; reports/benchmark_answers.csv; reports/classifier_evaluation.json; reports/classifier_fairness.json; speech and local-generation reports; submission pitch draft. Dataset files, model caches, .env and databases are ignored by Git.
+README.md; docs/architecture.png; contracts/c360.json; reports/data_quality.md; submission/benchmark_answers.csv; reports/classifier_evaluation.json; reports/classifier_fairness.json; speech and local-generation reports; submission pitch draft. Dataset files, model caches, .env and databases are ignored by Git.
 
 Agent Assist is the primary use case. All six are employee-reviewed local implementations with explicit data and evaluation limitations. The trained classifier, pretrained Whisper, baseline Qwen, completed factual-format LoRA and deterministic policies are separate components. No model was trained from scratch.
 
-Latest pitch draft: submission/5C2_pitch_draft_v7.pdf and submission/5C2_pitch_draft_v7.pptx. Earlier numbered drafts are superseded. Model choices and rubric adaptation are documented in docs/model_decisions.md.
+Latest pitch draft: submission/5C2_pitch_draft_v9.pdf and submission/5C2_pitch_draft_v9.pptx. Earlier numbered drafts are superseded. Model choices and rubric adaptation are documented in docs/model_decisions.md.
 
 ## Verified overnight results
 

@@ -1,6 +1,6 @@
 {
-  "version": "post-call-extractive-v0.4",
-  "code_sha256": "62d77f815be564c1e359c36eadd8340c449a5b1f62806105f1ae7c228aead2c4",
+  "version": "post-call-extractive-v0.5",
+  "code_sha256": "36959d72142a1fdaccb364cad805743ad6b7c281bf1a4b0c2269133d19475fd1",
   "label_source": "call_transcripts_labels_public_500.csv",
   "label_rows": 500,
   "evaluated": 447,
@@ -127,14 +127,14 @@
     },
     "hardship_handled_per_policy": {
       "tp": 26,
-      "fp": 1,
+      "fp": 0,
       "fn": 8,
-      "pass_label_without_candidate": 201,
+      "pass_label_without_candidate": 202,
       "excluded": 211,
       "detector_statuses": {
         "applicability_needs_review": 226,
-        "evidence_found": 185,
-        "potential_issue": 29,
+        "evidence_found": 186,
+        "potential_issue": 28,
         "needs_review": 7
       },
       "label_statuses": {
@@ -143,7 +143,7 @@
         "fail": 34
       },
       "evidence_rows": 221,
-      "precision": 0.9629629629629629,
+      "precision": 1.0,
       "recall": 0.7647058823529411,
       "actual_label_failures": 34,
       "metric_meaning": "Precision/recall of potential-issue flags against public fail labels; no-candidate and evidence_found are not compliance pass verdicts."

@@ -30,7 +30,7 @@ tmp/
 # Superseded presentation drafts stay local; keep the latest reviewed package.
 submission/5C2_pitch_draft*.pdf
 submission/5C2_pitch_draft*.pptx
-!submission/5C2_pitch_draft_v7.pdf
-!submission/5C2_pitch_draft_v7.pptx
+!submission/5C2_pitch_draft_v9.pdf
+!submission/5C2_pitch_draft_v9.pptx
 submission/5C2_rubric_brief_v*.pptx
-!submission/5C2_rubric_brief_v7.pptx
+!submission/5C2_rubric_brief_v9.pptx

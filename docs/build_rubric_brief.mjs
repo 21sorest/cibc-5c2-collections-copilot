@@ -18,7 +18,7 @@ const safeguards=JSON.parse(await fs.readFile(root+'/reports/decision_safeguards
 const checks=JSON.parse(await fs.readFile(root+'/reports/implementation_checks.json','utf8'));
 const semantics=JSON.parse(await fs.readFile(root+'/reports/question_semantics.json','utf8'));
 const p=Presentation.create({slideSize:{width:1280,height:720}});
-const staging=root+'/tmp/rubric_brief_v7';
+const staging=root+'/tmp/rubric_brief_v9';
 await fs.mkdir(staging,{recursive:true});
 await fs.mkdir(root+'/submission',{recursive:true});
 function text(slide,value,left,top,width,height,size=30,color='#253746',bold=false){
@@ -63,8 +63,8 @@ rows(s,[
 `All 12 numeric development benchmarks and ${semantics.passed} source-grounded policy/scope checks pass. Broad semantic accuracy remains unmeasured.`,
 `Hardship, ${classifier.evaluation_rows} development examples: classifier 98.6% precision/recall. Live combination: 94.7% precision, 100% recall.`,
 `Whisper small.en: ${(speech.aggregate_wer*100).toFixed(2)}% word error rate on ${speech.samples.length} approved synthetic recordings. Speaker review remains required.`,
-`LoRA: ${trained.train_examples} training examples. ${finalTest.examples} final factual-format outputs, ${(finalTest.complete_rate*100).toFixed(1)}% complete exact-value results. Narrow synthetic task only.`
-],27,91);
+`LoRA: ${trained.train_examples} training examples; ${finalTest.examples}/${finalTest.examples} final exact-value outputs. Narrow synthetic task.`
+],26,91);
 text(s,'Hidden-test results and preparation-time savings remain unmeasured.',76,650,1120,48,23,'#64717B');
 s=slide('Possible grading dimensions',source+' These are discussion categories, not an official rubric or proposed point allocation. Organisers decide model eligibility, depth versus breadth and benchmark rules.');
 rows(s,[
@@ -77,7 +77,7 @@ rows(s,[
 text(s,'Organiser decisions: paid APIs, pretrained models, use-case breadth and scoring weights.',76,650,1120,50,23,'#64717B');
 const candidate=staging+'/candidate.pptx';
 await (await PresentationFile.exportPptx(p)).save(candidate);
-const final=root+'/submission/5C2_rubric_brief_v7.pptx';
+const final=root+'/submission/5C2_rubric_brief_v9.pptx';
 await finalizePresentation({workspaceDir:root,candidatePath:candidate,finalPath:final,pythonExecutable:runtime+'/python/python.exe',integrityValidatorPath:skill+'/container_tools/inspect_presentation_package_integrity.py',layoutValidatorPath:skill+'/container_tools/inspect_presentation_layout_geometry.py',layoutArgs:['--expected-slide-size-emu','12192000,6858000','--validate-heading-fit'],explicitTotalSlideCount:6,fontPolicy:{basis:'design',families:[family]},verifyArtifactToolImport:true,receiptPath:staging+'/validation.json'});
 for(let i=0;i<p.slides.items.length;i++){const blob=await p.export({slide:p.slides.items[i],format:'png',scale:2});await fs.writeFile(staging+`/slide-${i+1}.png`,new Uint8Array(await blob.arrayBuffer()));}
 console.log(final);

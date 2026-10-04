@@ -194,6 +194,50 @@ class CallsDepthChecks(unittest.TestCase):
         self.assertEqual(row['status'],'needs_review')
         self.assertFalse(row['observations']['source_chronology_monotonic'])
 
+    def test_retracted_terms_cannot_ground_a_later_readback(self):
+        turns=[turn('agent',1,'Your account is past due.'),turn('customer',2,'I will pay $100 on Friday.'),
+            turn('customer',3,'I cannot pay that after all.'),turn('agent',4,'Just to confirm, a payment of $100 on Friday.')]
+        summary=structured_call_summary(turns)
+        self.assertFalse(summary['commitments'])
+        self.assertTrue(any(item['kind']=='customer withdrew payment terms' for item in summary['follow_ups']))
+        row={x['item_code']:x for x in qa_evidence(turns)}['ptp_details_confirmed_back']
+        self.assertEqual(row['status'],'applicability_needs_review')
+        revised=turns[:3]+[turn('customer',4,'I can do $50 on Friday.'),turn('agent',5,'Just to confirm, a payment of $50 on Friday.')]
+        row={x['item_code']:x for x in qa_evidence(revised)}['ptp_details_confirmed_back']
+        self.assertEqual(row['observations']['proposal_matching_readbacks'],1)
+
+    def test_negated_payment_demands_do_not_create_hardship_issue(self):
+        base=[turn('agent',1,'Your account is past due.'),turn('customer',2,'I lost my job.')]
+        for text in ['You do not have to pay today.','You do not need to pay today.',
+            'You never have to pay the full amount now.','Vous ne devez pas payer maintenant.']:
+            row={x['item_code']:x for x in qa_evidence(base+[turn('agent',3,text)])}['hardship_handled_per_policy']
+            self.assertNotEqual(row['status'],'potential_issue',text)
+            self.assertIsNone(row['observations']['payment_request_sec'])
+        mixed=base+[turn('agent',3,'You do not have to pay today. But you must pay now.')]
+        row={x['item_code']:x for x in qa_evidence(mixed)}['hardship_handled_per_policy']
+        self.assertEqual(row['status'],'potential_issue')
+
+    def test_malformed_source_turns_fail_closed_with_safe_error(self):
+        malformed=[None,{},turn('customer',float('nan'),'secret'),turn('agent',-1,'secret'),
+            turn('customer',1,None),turn('unknown',1,'secret'),turn('agent',True,'secret')]
+        for item in malformed:
+            for function in (qa_evidence,structured_call_summary):
+                with self.subTest(item=item,function=function.__name__),self.assertRaisesRegex(ValueError,'Malformed call evidence'):
+                    function([item])
+
+    def test_duplicate_source_turns_are_not_counted_as_two_commitments(self):
+        item=turn('customer',2,'I will pay $100 tomorrow.')
+        with self.assertRaisesRegex(ValueError,'duplicate source turn'):
+            structured_call_summary([turn('agent',1,'Your account is past due.'),item,item.copy()])
+        backwards=[turn('agent',1,'Your account is past due.'),turn('customer',3,'I will pay $100 tomorrow.'),
+            turn('agent',2,'Just to confirm, $100 tomorrow.')]
+        self.assertFalse(structured_call_summary(backwards)['commitments'])
+
+    def test_known_third_party_turn_cannot_create_customer_commitment(self):
+        turns=[turn('agent',1,'Your account is past due.'),turn('third_party',2,'I will pay $100 tomorrow.')]
+        self.assertFalse(structured_call_summary(turns)['commitments'])
+        self.assertFalse(structured_call_summary(turns)['customer_situation'])
+
     def test_latest_call_is_selected_at_the_aware_review_cutoff(self):
         with tempfile.TemporaryDirectory() as directory,duckdb.connect() as con:
             root=Path(directory)

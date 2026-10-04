@@ -167,7 +167,7 @@ The local LoRA fine-tune completed on 1,529 synthetic factual-format examples in
 
 Run `python export_c360.py` to prepare `data/c360_release/` for user-managed Hugging Face upload. It contains the 1,011,944-row compressed C360, checksum manifest, contract, quality report and dataset card. No upload occurs. Add the final dataset URL to the README after publication.
 
-Submission drafts: `submission/5C2_pitch_draft_v7.pdf` and its editable PPTX. Review their content before final submission. Deck sources are `docs/build_deck.mjs` and `docs/export_deck_pdf.py`, using the bundled artifact runtime. The PDF uses high-resolution slide renders; the PPTX retains editable text and its numeric chart.
+Submission drafts: `submission/5C2_pitch_draft_v9.pdf` and its editable PPTX. Review their content before final submission. Deck sources are `docs/build_deck.mjs` and `docs/export_deck_pdf.py`, using the bundled artifact runtime. The PDF uses high-resolution slide renders; the PPTX retains editable text and its numeric chart.
 
 Local UI integration checks: `python -m unittest -q test_ui` needs the built dataset and verifies temporary login, assignment selection, reviewer identity, conversation assistance, supervisor-only aggregate queries and sign-out. CI skips that integration check when the dataset is unavailable.
 
@@ -183,4 +183,4 @@ See `docs/model_decisions.md` for local model choices and rubric adaptation. The
 
 Local LoRA training and the implementation review pass are complete. Broader independent evaluation remains limited by the supplied synthetic data. Current test evidence belongs in the progress log rather than a stale fixed count here. The final rubric/extra questions, account connections, a human timing study if claiming savings, and video/final submission still need the user. Start with `docs/handoff.md`. No paid application API calls or dataset/model uploads occurred. Source code and submission artifacts are published to the private repository.
 
-Latest verification: 114 automated checks passed with no failures or skips. The current proposal audit checks 719 approved cases; 24 source-grounded policy/scope acceptance checks complement 12 numeric public benchmarks. See reports/implementation_checks.json, reports/decision_safeguards.json, reports/question_semantics.json and docs/deeper_use_cases.md for scope and limits.
+Latest verification: 130 automated checks passed with no failures or skips. The current proposal audit checks 719 approved cases; 24 source-grounded policy/scope acceptance checks complement 12 numeric public benchmarks. See reports/implementation_checks.json, reports/decision_safeguards.json, reports/question_semantics.json and docs/deeper_use_cases.md for scope and limits.

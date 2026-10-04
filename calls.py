@@ -1,6 +1,7 @@
 """Post-call signal summary and QA evidence triage, not an automatic compliance verdict."""
 import json
 import calendar
+import math
 import re
 from datetime import datetime, timezone
 from decimal import Decimal
@@ -10,7 +11,7 @@ from pipeline import DEFAULT_RELEASE
 from text_signals import VERSION, extract, normalize, redact, negated_match
 
 
-CALL_VERSION='post-call-extractive-v0.4'
+CALL_VERSION='post-call-extractive-v0.5'
 AMOUNT_PATTERN=r'(?:\$\s*\d[\d,]*(?:\.\d{1,2})?|\b(?:CAD|C\$)\s*\d[\d,]*(?:\.\d{1,2})?|\b\d[\d,]*(?:\.\d{1,2})?\s*(?:dollars?|CAD)\b)'
 DATE_PATTERN=r'\b(?:20\d\d-\d\d-\d\d|(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?|janvier|fevrier|mars|avril|mai|juin|juillet|aout|septembre|octobre|novembre|decembre)\s+\d{1,2}(?:,?\s+20\d\d)?|\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December|janvier|fevrier|mars|avril|mai|juin|juillet|aout|septembre|octobre|novembre|decembre)|tomorrow|today|demain|aujourd.hui|(?:next\s+)?(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)|(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)(?:\s+prochain)?)\b'
 IDENTITY_PATTERN=r'date (?:of birth|de naissance)|birth date|\bdob\b|verify.{0,25}identity|confirm.{0,25}identity|verifi.{0,25}identite|confirm.{0,40}(?:email|phone|address)|confirme.{0,40}(?:courriel|telephone|adresse)'
@@ -18,6 +19,26 @@ PROTECTED_CONTEXT=r'\b(?:gender|citizenship|religion|religious|marital|married|d
 OPTION_PATTERN=r'option|arrangement|reduced payment|deferral|payment plan|hardship program|skip.{0,15}payment|paiement reduit|report de paiement|entente|programme'
 PAYMENT_REQUEST=r'(?:full|whole|entire) amount is (?:still )?due|montant total.{0,15}(?:du|exigible)|can you (?:pay|make.{0,15}payment)|(?:could|would) you.{0,20}(?:pay|make.{0,15}payment)|will you be paying|how would you like to make.{0,15}payment|(?:need|must|have to).{0,20}(?:pay|payment)|pay.{0,20}(?:today|now)|payment.{0,15}(?:today|now)|pouvez.vous payer|(?:devez|faut).{0,15}payer|payer.{0,20}(?:aujourd|maintenant)|comment.{0,25}(?:faire|effectuer).{0,15}paiement'
 ESCALATION_PATTERN=r'transfer|escalat|refer.{0,25}(?:specialist|team)|transfert|transferer|transmettre.{0,25}(?:equipe|specialiste)'
+
+
+def validate_call_turns(turns):
+    if not isinstance(turns,list):
+        raise ValueError('Malformed call evidence; review the original recording.')
+    seen=set()
+    for turn in turns:
+        if not isinstance(turn,dict) or turn.get('speaker') not in ('agent','customer','third_party') or not isinstance(turn.get('text'),str) or not isinstance(turn.get('start_sec'),(int,float)) or isinstance(turn.get('start_sec'),bool) or not math.isfinite(turn['start_sec']) or turn['start_sec']<0:
+            raise ValueError('Malformed call evidence; review the original recording.')
+        key=(turn['speaker'],turn['start_sec'],turn['text'])
+        if key in seen:
+            raise ValueError('Malformed call evidence; duplicate source turn requires review.')
+        seen.add(key)
+
+
+def payment_denied(text,match):
+    # Negation belongs to its clause; a later affirmative demand after "but" is independent.
+    preceding=re.split(r'[.!?;]|\bbut\b|\bmais\b',text[:match.start()])[-1]
+    clause=preceding+text[match.start():match.end()]
+    return bool(re.search(r"\b(?:do not|don.t|never|no need|not required|not necessary|cannot|can.t)\b|\bne\b.{0,35}\bpas\b",clause))
 
 
 def literal_date_key(value):
@@ -47,6 +68,7 @@ def financial_customer_turns(turns):
 
 
 def structured_call_summary(turns):
+    validate_call_turns(turns)
     customers=financial_customer_turns(turns)
     situation=[]
     commitments=[]
@@ -74,6 +96,12 @@ def structured_call_summary(turns):
         conditional=bool(re.search(r'\b(?:if|might|could|would|si|pourrais)\b|\bmay\s+pay\b|peut.etre',normalized))
         denied=bool(re.search(r"\b(?:cannot|can.t|won.t|will not|never|not promise|not guarantee|not commit|no promise|no commitment)\b|\bne.{0,35}pas\b",normalized))
         reported=bool(re.search(r'\b(?:said|says|told|quoted|quote|reported|according to|my spouse|my husband|my wife|my partner|selon|disait)\b|\ba dit\b',normalized))
+        withdrawn=not reported and bool(re.search(r"\b(?:i|we)\s+(?:cannot|can.t|won.t|will not|can no longer|am unable to)\s+(?:pay|make.{0,15}payment)|\b(?:cancel|withdraw|retract).{0,25}(?:payment|promise|commitment)|\bje ne.{0,20}(?:peux|vais).{0,20}pas.{0,20}payer",normalized))
+        if withdrawn:
+            commitments=[]
+            follow=[item for item in follow if item['kind']!='payment proposal needs confirmation']
+            follow.append({**quote,'kind':'customer withdrew payment terms','confirmed_commitment':False,'requires_employee_confirmation':True})
+
         if intent and len(amounts)==1 and len(dates)==1 and not conditional and not denied and not reported:
             commitments.append({**quote,'amount_text':amount[0],'date_text':day[0],
                 'specificity':'explicit customer payment statement; literal date only','requires_employee_confirmation':True})
@@ -95,16 +123,22 @@ def structured_call_summary(turns):
                 follow.append({'start_sec':turn['start_sec'],'speaker':'agent','quote':
                     '[Personal context omitted; verify follow-up in the recording.]' if re.search(PROTECTED_CONTEXT,text) else redact(turn['text']),
                     'kind':'agent proposed follow-up, not an executed action','confirmed_commitment':False})
+    chronology_monotonic=all(float(left['start_sec'])<=float(right['start_sec']) for left,right in zip(turns,turns[1:]))
+    if not chronology_monotonic:
+        commitments=[]
+        follow=[item for item in follow if item['kind']!='payment proposal needs confirmation']
     return {'customer_situation':situation[:12],'commitments':commitments,'unresolved_issues':issues,
         'follow_ups':follow,'extraction_limits':['Customer evidence follows financial_call_evidence identity-response filtering and its 24-entry bound.',
+            'Payment terms are withheld when source timestamps run backwards; source chronology requires employee review.',
             'Numeric currency amounts and explicit literal dates only. Relative dates are not converted to calendar dates.',
             'Multiple amounts or dates in a customer statement remain an unconfirmed proposal, avoiding incorrect value binding.',
-            'Agent offers, conditional proposals and generic acknowledgments do not create customer payment commitments.',
+            'Agent offers, conditional proposals and generic acknowledgments do not create customer payment commitments. Later explicit withdrawal removes earlier payment terms from active extraction.',
             'Personal-context omission is a keyword safeguard, not comprehensive PII detection; employees must review excerpts.',
             'Issue mentions do not establish that an issue is unresolved or resolved; employee review is required.']}
 
 
 def qa_evidence(turns):
+    validate_call_turns(turns)
     source_order={id(turn):index for index,turn in enumerate(turns)}
     timestamps=[float(turn['start_sec']) for turn in turns]
     chronology_monotonic=all(left<=right for left,right in zip(timestamps,timestamps[1:]))
@@ -117,6 +151,8 @@ def qa_evidence(turns):
             for match in re.finditer(pattern,text):
                 prefix=text[:match.start()]
                 denied=negated_match(text,match) or bool(re.search(r"\b(?:cannot|can.t|won.t|will not|not allowed to|not going to|never|not)\s+(?:(?:be|a|an)\s+)?$|\bne.{0,30}pas(?:\s+vous)?\s*$",prefix))
+                if pattern==PAYMENT_REQUEST:
+                    denied=denied or payment_denied(text,match)
                 if not ignore_negated or not denied:
                     evidence.append(turn)
                     break
@@ -124,7 +160,7 @@ def qa_evidence(turns):
     def first(items):
         return min((float(turn['start_sec']) for turn in items),default=None)
     def position(items,pattern):
-        positions=[(float(turn['start_sec']),source_order[id(turn)],match.start()) for turn in items for match in re.finditer(pattern,normalize(turn['text']))]
+        positions=[(float(turn['start_sec']),source_order[id(turn)],match.start()) for turn in items for match in re.finditer(pattern,normalize(turn['text'])) if pattern!=PAYMENT_REQUEST or not payment_denied(normalize(turn['text']),match)]
         return min(positions,default=None)
     def evidence(items):
         unique={(float(turn['start_sec']),turn['speaker'],turn['text']):turn for turn in items}
@@ -170,7 +206,7 @@ def qa_evidence(turns):
     hardship=[turn for turn in customers if extract(turn['text'])['hardship']]
     acknowledgment=find(r'sorry to hear|understand.{0,30}(?:situation|difficult)|thank.{0,25}explaining|desole|comprends.{0,30}(?:situation|difficulte)|merci.{0,25}expliqu')
     options=find(OPTION_PATTERN)
-    requests=find(PAYMENT_REQUEST)
+    requests=find(PAYMENT_REQUEST,True)
     after=lambda items,stamp:[turn for turn in items if stamp is not None and float(turn['start_sec'])>=stamp]
     ack_after=after(acknowledgment,first(hardship))
     option_after=after(options,first(hardship))
@@ -271,7 +307,9 @@ def post_call(con,case_id,release=DEFAULT_RELEASE,when=None):
         raise ValueError('No identity-matched recorded call is available for this case.')
     row=rows[0]
     body=json.loads(safe_file(release,row['file_path']).read_text(encoding='utf-8'))
-    structured=structured_call_summary(body['turns'])
+    turns=body.get('turns') if isinstance(body,dict) else None
+    validate_call_turns(turns)
+    structured=structured_call_summary(turns)
     events=[]
     for turn in financial_customer_turns(body['turns']):
         if turn['speaker']=='customer':

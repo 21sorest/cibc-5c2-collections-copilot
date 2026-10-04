@@ -17,7 +17,7 @@ pdf=canvas.Canvas(str(output),pagesize=(960,540))
 pdf.setTitle('Team 5C2 Collections Copilot: rubric discussion overview')
 pdf.setAuthor('Team 5C2')
 for index in range(1,7):
-    pdf.drawImage(str(root/f'tmp/rubric_brief_v7/slide-{index}.png'),0,0,width=960,height=540)
+    pdf.drawImage(str(root/f'tmp/rubric_brief_v9/slide-{index}.png'),0,0,width=960,height=540)
     pdf.showPage()
 pdf.save()
 assert len(PdfReader(output).pages)==6

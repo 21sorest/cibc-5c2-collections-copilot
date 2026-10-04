@@ -18,7 +18,7 @@ The local prototype connects all four layers, with a team-trained text classifie
 | Measured preparation-time improvement | No claim made | Run a timed manual-versus-assisted study |
 | Private GitHub repository and commits | Private repo created; source uploaded; cibchack26 invitation sent | Organizer acceptance and final updates |
 | Demo video, maximum 5 minutes | docs/demo_script.md | Record and submit a link |
-| Pitch deck, maximum 10 slides, PDF | submission/5C2_pitch_draft_v7.pdf, nine slides, with editable PPTX | Final team/rubric review and separate submission |
+| Pitch deck, maximum 10 slides, PDF | submission/5C2_pitch_draft_v9.pdf, nine slides, with editable PPTX | Final team/rubric review and separate submission |
 | Generated C360 hosting | data/c360_release local export with checksum and contract | User-managed Hugging Face upload and final link |
 
 The supplied build instructions set the additional-question release to 4 October 2026 at 7 PM IST, with final submission at 9 PM IST. Benchmark answers must come from the application runner and must not be manually edited.
