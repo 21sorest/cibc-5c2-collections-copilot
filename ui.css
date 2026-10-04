@@ -1,0 +1,53 @@
+<style>
+:root { color-scheme: dark; --canvas: #14161b; --surface: #1c1f26; --rule: #30333b; --muted: #a9abb3; --ink: #f0f0ef; --accent: #c6a577; }
+.stApp { background: var(--canvas); color: var(--ink); font-family: 'Segoe UI', sans-serif; }
+[data-testid="stHeader"] { background: var(--canvas); }
+[data-testid="stMainBlockContainer"] { max-width: 1440px; padding: 4.5rem 2.5rem 3rem; }
+[data-testid="stSidebar"] { background: #191c22; border-right: 1px solid var(--rule); }
+[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] { padding-top: 1.8rem; }
+[data-testid="stSidebar"] h2 { font-size: 1.05rem; font-weight: 600; padding-top: 1.8rem; }
+.workspace-brand { display: flex; align-items: center; gap: .75rem; font-size: 1.35rem; font-weight: 700; color: var(--accent); }
+.workspace-brand span { font-size: .85rem; color: var(--ink); font-weight: 500; }
+.workspace-footer { margin: 2rem 0 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: .78rem; line-height: 1.7; color: var(--muted); }
+.app-bar { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--rule); padding-bottom: 1.15rem; margin-bottom: 1.8rem; gap: 1rem; }
+.app-wordmark { display: flex; align-items: center; gap: .75rem; font-size: 1rem; font-weight: 600; }
+.copilot-mark { background: #302b24; color: #dfc59f; border-radius: 4px; padding: .3rem .4rem; font-size: .7rem; font-weight: 700; }
+.app-environment { color: var(--muted); font-size: .8rem; }
+.case-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.case-heading p { margin: 0 0 .4rem; font-size: .85rem; color: var(--muted); }
+.case-heading h1 { font-size: clamp(1.5rem, 2.7vw, 2.3rem); padding: 0; line-height: 1.15; font-weight: 600; letter-spacing: -.035em; }
+.case-state { border-left: 2px solid var(--accent); padding: .2rem .7rem; font-size: .85rem; color: #dfc59f; }
+.case-ledger { display: grid; grid-template-columns: 1.25fr .7fr 1fr 1fr; align-items: center; padding: 1.4rem 0 1.65rem; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 1rem; }
+.case-ledger > div { padding: 0 1.3rem; border-left: 1px solid var(--rule); }
+.case-ledger > div:first-child { padding-left: 0; border-left: 0; }
+.case-ledger span { display: block; color: var(--muted); font-size: .78rem; margin-bottom: .6rem; line-height: 1.4; }
+.case-ledger strong { display: block; font-size: 1.7rem; font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: -.03em; line-height: 1.2; }
+.case-ledger .ledger-amount strong { font-size: 2.6rem; color: #dfc59f; }
+.case-ledger .ledger-queue strong { font-size: 1.05rem; line-height: 1.5; letter-spacing: 0; }
+[data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p { color: var(--muted); font-size: .8rem; }
+[data-testid="stTabs"] { margin-top: .2rem; }
+[role="tablist"] { gap: .5rem; border-bottom: 1px solid var(--rule); }
+[role="tab"] { padding: .7rem .2rem; margin-right: .6rem; color: var(--muted); font-size: .8rem; }
+[role="tab"][aria-selected="true"] { color: #dfc59f; background: transparent; }
+[role="tabpanel"] { padding-top: 1.15rem; }
+h3 { font-size: 1.05rem !important; font-weight: 600 !important; letter-spacing: -.015em; padding-top: .8rem !important; padding-bottom: .7rem !important; }
+[data-testid="stDataFrame"] { border: 1px solid var(--rule); border-radius: 5px; overflow: hidden; }
+[data-testid="stForm"] { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1.5rem; }
+[data-testid="stExpander"] { border: 1px solid var(--rule); border-radius: 5px; background: transparent; }
+[data-testid="stExpander"] summary:hover { color: #dfc59f; }
+[data-testid="stAlert"] { border: 1px solid var(--rule); border-radius: 5px; }
+[data-testid="stAlert"] p { color: var(--ink); }
+.stButton button, .stFormSubmitButton button { border-radius: 5px; font-size: .85rem; font-weight: 600; transition: border-color 150ms, background-color 150ms; }
+.stButton button:hover, .stFormSubmitButton button:hover { border-color: var(--accent); }
+button[kind^="primary"], button[kind^="primary"] p { color: #14161b; }
+.stButton button:focus-visible, .stFormSubmitButton button:focus-visible, [role="tab"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+pre { border: 1px solid var(--rule); border-radius: 5px; }
+@media (max-width: 900px) {
+ [data-testid="stMainBlockContainer"] { padding: 4.5rem 1.2rem 3rem; }
+ .app-environment { display: none; }
+ .case-ledger { grid-template-columns: 1fr 1fr; gap: 1.4rem 0; }
+ .case-ledger > div:nth-child(3) { padding-left: 0; border-left: 0; }
+ .case-ledger .ledger-amount strong { font-size: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) { button { transition: none !important; } }
+</style>

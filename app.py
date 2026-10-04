@@ -1,6 +1,7 @@
 """Local synthetic-data Collections Copilot demo."""
 from datetime import datetime, timezone
 import json
+from html import escape
 import time
 
 import duckdb
@@ -19,10 +20,9 @@ from local_llm import MODEL as LOCAL_MODEL, enhance_summary as enhance_local_sum
 from speech import approved_cached_audio
 from trained_llm import available as trained_available, enhance_summary as enhance_trained_summary
 
-st.set_page_config(page_title='Collections Copilot',page_icon='📋',layout='wide')
-st.title('Collections Copilot')
-st.caption('Team 5C2 · Synthetic Maple Bank data · Snapshot 28 September 2026')
-st.info('Local employee-review demo. Data reflects the supplied snapshot. No messages or payment changes are executed.')
+st.set_page_config(page_title='Collections Copilot',page_icon='◈',layout='wide')
+st.html((ROOT/'ui.css').read_text(encoding='utf-8'))
+st.markdown('<header class="app-bar"><div class="app-wordmark"><span class="copilot-mark">5C2</span> Collections Copilot</div><span class="app-environment">Local employee-review demo</span></header>',unsafe_allow_html=True)
 
 if USERS.exists():
     actor=st.session_state.get('actor')
@@ -58,7 +58,7 @@ if USERS.exists():
         st.rerun()
 else:
     actor={'name':'local-demo-reviewer','role':'supervisor','agent_id':''}
-    st.caption('Demo access: no account file is configured. Local password accounts and assignment checks activate after account setup.')
+
 
 database=ROOT/'data/collections.duckdb'
 if not database.exists():
@@ -76,6 +76,7 @@ with connection as con:
         st.error('Build the feature snapshot first: python features.py build')
         st.stop()
     with st.sidebar:
+        st.markdown('<div class="workspace-brand">5C2<span>Collections workspace</span></div>',unsafe_allow_html=True)
         st.header('Case workspace')
         if actor['role']=='agent':
             assigned=[r[0] for r in con.execute("SELECT case_id FROM curated.cases WHERE assigned_agent_id=? AND case_status='open' ORDER BY case_id LIMIT 100",[actor['agent_id']]).fetchall()]
@@ -85,11 +86,16 @@ with connection as con:
             case_id=st.selectbox('Assigned case',assigned)
         else:
             case_id=st.text_input('Case ID',value='CS-2026-614370')
-        reviewer=st.text_input('Reviewer name or employee ID',value=actor['name'],disabled=USERS.exists())
-        channel=st.selectbox('Proposed channel',['call','sms','email'])
+        with st.expander('Review settings'):
+            reviewer=st.text_input('Reviewer name or employee ID',value=actor['name'],disabled=USERS.exists())
+            channel=st.selectbox('Proposed channel',['call','sms','email'])
         simulation=st.checkbox('Use snapshot time for demonstration',value=True)
-        st.caption('Snapshot simulation shows policy behaviour on the release date. Current-time checks block stale data.')
-        when_text=st.text_input('Decision time, with UTC offset',value='2026-09-28T15:00:00+00:00',disabled=not simulation)
+        st.caption('Release-date simulation. Turn off to check current-time restrictions.')
+        with st.expander('Snapshot and decision time'):
+            when_text=st.text_input('Decision time, with UTC offset',value='2026-09-28T15:00:00+00:00',disabled=not simulation)
+        st.markdown('<div class="workspace-footer">Synthetic Maple Bank data<br>Snapshot 28 September 2026<br><br>Employee review only. No contact or payment changes are executed.</div>',unsafe_allow_html=True)
+        if not USERS.exists():
+            st.caption('Demo access. Account sign-in is not configured.')
     try:
         when=datetime.fromisoformat(when_text) if simulation else datetime.now(timezone.utc)
         authorize_case(con,actor,case_id.strip())
@@ -99,20 +105,29 @@ with connection as con:
         st.error(str(error))
         st.stop()
     case=bundle['case']
-    a,b,c,d=st.columns(4)
-    a.metric('Days past due',bundle['features']['case_max_dpd'])
-    b.metric('Case overdue CAD',str(bundle['features']['case_overdue_cad']))
-    c.metric('Attempts in 7 snapshot dates',bundle['features']['contact_attempts_7d'])
-    d.metric('Assigned queue',case['queue'])
+    overdue=bundle['features']['case_overdue_cad']
+    amount=f'${overdue:,.2f}' if overdue is not None else 'Unknown'
+    queue=str(case['queue'] or 'Unknown').replace('_',' ').capitalize()
+    status=str(case['case_status'] or 'Unknown').replace('_',' ').capitalize()
+    st.markdown(f'''<section class="case-heading"><div><p>Case review</p><h1>{escape(case_id.strip())}</h1></div><span class="case-state">{escape(status)}</span></section>
+        <section class="case-ledger" aria-label="Case financial summary">
+        <div class="ledger-amount"><span>Case overdue CAD</span><strong>{amount}</strong></div>
+        <div><span>Days past due</span><strong>{escape(str(bundle['features']['case_max_dpd']))}</strong></div>
+        <div><span>Attempts in 7 snapshot dates</span><strong>{escape(str(bundle['features']['contact_attempts_7d']))}</strong></div>
+        <div class="ledger-queue"><span>Assigned queue</span><strong>{escape(queue)}</strong></div></section>''',unsafe_allow_html=True)
     overview,signals,conversation,decisioning,postcall,review,questions=st.tabs(['Case evidence','12 features','Conversation assistance','Decision proposals','Post-call review','Review assistance','Ask a question'])
     with overview:
-        st.subheader('Linked accounts')
-        st.dataframe(bundle['accounts'],hide_index=True)
+        st.caption('Matched accounts and recorded activity. Source references are retained in every table.')
+        account_panel,promise_panel=st.columns([1.3,1],gap='large')
+        with account_panel:
+            st.subheader('Linked accounts')
+            st.dataframe(bundle['accounts'],hide_index=True,width='stretch',column_order=['account_id','balance_cad','past_due_cad','dpd']+[key for key in (bundle['accounts'][0] if bundle['accounts'] else {}) if key not in ('account_id','balance_cad','past_due_cad','dpd')],column_config={'account_id':'Account','balance_cad':st.column_config.NumberColumn('Balance CAD',format='$%.2f'),'past_due_cad':st.column_config.NumberColumn('Overdue CAD',format='$%.2f'),'dpd':'DPD'})
+        with promise_panel:
+            st.subheader('Promises to pay')
+            st.dataframe(bundle['promises'],hide_index=True,width='stretch',column_order=['ptp_status','ptp_amount_cad','ptp_due_date']+[key for key in (bundle['promises'][0] if bundle['promises'] else {}) if key not in ('ptp_status','ptp_amount_cad','ptp_due_date')],column_config={'ptp_status':'Status','ptp_amount_cad':st.column_config.NumberColumn('Amount CAD',format='$%.2f'),'ptp_due_date':'Due date'})
         st.subheader('Recent contacts')
-        st.dataframe(bundle['contacts'],hide_index=True)
-        st.subheader('Promises to pay')
-        st.dataframe(bundle['promises'],hide_index=True)
-        st.caption('Customer amounts cover matched accounts only. Empty tables and unknown values are not proof of no activity.')
+        st.dataframe(bundle['contacts'],hide_index=True,width='stretch',column_order=['contact_ts_utc','channel','direction','outcome_code','rpc_flag']+[key for key in (bundle['contacts'][0] if bundle['contacts'] else {}) if key not in ('contact_ts_utc','channel','direction','outcome_code','rpc_flag')],column_config={'contact_ts_utc':'Contact time UTC','channel':'Channel','direction':'Direction','outcome_code':'Outcome','rpc_flag':'Right-party contact'})
+        st.caption('Financial totals cover matched accounts only. Unknown values are not proof of no activity.')
     with signals:
         st.dataframe([{'feature':name,'value':str(bundle['features'][name])} for name in FEATURE_NAMES],hide_index=True)
         st.caption('Version '+bundle['features']['definition_version']+' · Rules-based text extractor · Current snapshot only')
@@ -125,7 +140,7 @@ with connection as con:
             customer_text=st.text_area('What did the customer say?',max_chars=12000,key='customer_text:'+case_id.strip())
             verified=st.checkbox('Employee completed approved identity verification',value=False,key='identity_verified:'+case_id.strip())
             local_model=st.checkbox('Include locally trained hardship detection',value=True)
-            generate=st.form_submit_button('Prepare conversation assistance')
+            generate=st.form_submit_button('Prepare conversation assistance',type='primary')
         if generate:
             try:
                 st.session_state['conversation_draft']=assist(con,bundle,customer_text,verified,use_model=local_model)
@@ -159,7 +174,7 @@ with connection as con:
                     st.error(str(error))
     with decisioning:
         st.caption('Next Best Action, channel comparison and agent routing use current case evidence. These are proposals for employee review.')
-        if st.button('Compare action, channels and routing'):
+        if st.button('Compare action, channels and routing',type='primary'):
             try:
                 st.session_state['decision_proposal']=recommend(con,bundle,when)
             except (ValueError,duckdb.Error) as error:
@@ -238,7 +253,7 @@ with connection as con:
                     st.audio(str(audio_path))
                 st.json(audio_body['segments'])
                 st.caption('Pretrained '+audio_body['model']+' · CPU int8 · Speaker attribution requires employee review')
-        if st.button('Review latest matched call'):
+        if st.button('Review latest matched call',type='primary'):
             try:
                 st.session_state['post_call']=post_call(con,case_id.strip(),when=when)
             except ValueError as error:

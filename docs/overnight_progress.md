@@ -1,3 +1,9 @@
+# Demo appearance update
+
+The user requested a dark-mode redesign and a Taste Skill pass before recording. Reviewed the supplied UI design gallery and applied the Taste Skill existing-project redesign guidance. The final layout uses charcoal surfaces, warm gold accents, a compact app bar, an actual case ID/status header and a single financial ledger instead of repeated metric cards. Review settings and decision time use sidebar disclosure. Accounts and promises sit side by side, with readable column labels and money formatting; all source columns remain available. Native controls preserve the existing workflow labels and accessibility. Both dataset-backed UI tests passed. Real case tables and the conversation form were visually checked in the browser. No backend decisions, model behavior or benchmark answers changed.
+
+---
+
 # Extra benchmark continuation
 
 All 50 questions were generated through the application, with 41 answers, 9 refusals and zero execution errors. The 15 extra questions have 12 source-backed answers and 3 refusals for bulk personal data or protected-attribute prioritization. Fixed metric/policy routing, fraud-dispute wording, inclusive day ranges and promise-channel grouping. Six independent fixture tests verify population scope, dates, rates, deduplication and refusals. 136 full tests passed without failures or skips; 12 numeric development benchmarks remain passing. Extra accuracy is unscored because no organizer answer keys were supplied. The SMS denominator is distinct outbound payment links, not repeated contact rows; its source interpretation is disclosed in reports/benchmark_extra_review.json. No model retraining or hidden-label access occurred.
