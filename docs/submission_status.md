@@ -17,7 +17,7 @@ The local prototype connects all four layers, with a team-trained text classifie
 | Quality and numeric benchmark evaluation | reports/data_quality.md, reports/benchmark_dev_evaluation.json | Hidden benchmarks are not verified |
 | Measured preparation-time improvement | No claim made | Run a timed manual-versus-assisted study |
 | Private GitHub repository and commits | Private repo created; source uploaded; cibchack26 invitation sent | Organizer acceptance and final updates |
-| Demo video, maximum 5 minutes | docs/demo_script.md | Record and submit a link |
+| Demo video, maximum 5 minutes | docs/demo_recording_script.md, timed 4:45 run-of-show | Record and submit a link |
 | Pitch deck, maximum 10 slides, PDF | submission/5C2_pitch_draft_v9.pdf, nine slides, with editable PPTX | Final team/rubric review and separate submission |
 | Generated C360 hosting | data/c360_release local export with checksum and contract | User-managed Hugging Face upload and final link |
 
