@@ -12,7 +12,7 @@ Team 5C2's CIBC Collections Hackathon implementation. A local employee workspace
 | Data quality issues, counts and handling | [reports/data_quality.md](reports/data_quality.md) |
 | All benchmark answers | [submission/benchmark_answers.csv](submission/benchmark_answers.csv) |
 
-The benchmark CSV contains all **50 released questions**, including the 15 extras, in the organizer's exact column format: `question_id,answer,sql_or_sources,refused`. It contains 41 answers and 9 refusals; the extra set has 12 answers and 3 privacy/protected-ranking refusals. Answers are generated through the application's question runner, never manually filled. Official extra-answer accuracy is unknown because no extra answer keys were supplied.
+The benchmark CSV contains all **50 released questions** in the required column format: `question_id,answer,sql_or_sources,refused`. It contains 41 answers and 9 refusals, with zero execution errors. Answers are generated through the application's question runner, never manually filled. Complete coverage does not establish answer accuracy.
 
 The contract adapts release example `DC-COLL-001`. The architecture is a programmatic engineering diagram; its [source](docs/architecture.mmd) and [renderer](docs/render_architecture.py) are included. No image-generation model was used for it.
 

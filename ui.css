@@ -2,7 +2,7 @@
 :root { color-scheme: dark; --canvas: #14161b; --surface: #1c1f26; --rule: #30333b; --muted: #a9abb3; --ink: #f0f0ef; --accent: #c6a577; }
 .stApp { background: var(--canvas); color: var(--ink); font-family: 'Segoe UI', sans-serif; }
 [data-testid="stHeader"] { background: var(--canvas); }
-[data-testid="stMainBlockContainer"] { max-width: 1440px; padding: 4.5rem 2.5rem 3rem; }
+[data-testid="stMainBlockContainer"] { max-width: 1440px; padding: 3.6rem 2.7rem 4rem; }
 [data-testid="stSidebar"] { background: #191c22; border-right: 1px solid var(--rule); }
 [data-testid="stSidebar"] [data-testid="stSidebarUserContent"] { padding-top: 1.8rem; }
 [data-testid="stSidebar"] h2 { font-size: 1.05rem; font-weight: 600; padding-top: 1.8rem; }
@@ -24,16 +24,20 @@
 .case-ledger strong { display: block; font-size: 1.7rem; font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: -.03em; line-height: 1.2; }
 .case-ledger .ledger-amount strong { font-size: 2.6rem; color: #dfc59f; }
 .case-ledger .ledger-queue strong { font-size: 1.05rem; line-height: 1.5; letter-spacing: 0; }
-[data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p { color: var(--muted); font-size: .8rem; }
+[data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p { color: #b7b9c1; font-size: .82rem; line-height: 1.6; }
 [data-testid="stTabs"] { margin-top: .2rem; }
 [role="tablist"] { gap: .5rem; border-bottom: 1px solid var(--rule); }
-[role="tab"] { padding: .7rem .2rem; margin-right: .6rem; color: var(--muted); font-size: .8rem; }
+[role="tab"] { padding: .8rem .25rem; margin-right: .6rem; color: #b7b9c1; font-size: .88rem; }
 [role="tab"][aria-selected="true"] { color: #dfc59f; background: transparent; }
 [role="tabpanel"] { padding-top: 1.15rem; }
-h3 { font-size: 1.05rem !important; font-weight: 600 !important; letter-spacing: -.015em; padding-top: .8rem !important; padding-bottom: .7rem !important; }
+h3 { font-size: 1.15rem !important; font-weight: 600 !important; letter-spacing: -.015em; padding-top: 1rem !important; padding-bottom: .7rem !important; }
+[data-testid="stMarkdownContainer"] p { line-height: 1.65; }
+[data-testid="stWidgetLabel"] p { font-size: .88rem; font-weight: 500; }
+textarea { line-height: 1.65 !important; }
 [data-testid="stDataFrame"] { border: 1px solid var(--rule); border-radius: 5px; overflow: hidden; }
 [data-testid="stForm"] { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1.5rem; }
 [data-testid="stExpander"] { border: 1px solid var(--rule); border-radius: 5px; background: transparent; }
+[data-testid="stExpander"] summary { padding: .8rem 1rem; }
 [data-testid="stExpander"] summary:hover { color: #dfc59f; }
 [data-testid="stAlert"] { border: 1px solid var(--rule); border-radius: 5px; }
 [data-testid="stAlert"] p { color: var(--ink); }
@@ -42,12 +46,20 @@ h3 { font-size: 1.05rem !important; font-weight: 600 !important; letter-spacing:
 button[kind^="primary"], button[kind^="primary"] p { color: #14161b; }
 .stButton button:focus-visible, .stFormSubmitButton button:focus-visible, [role="tab"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 pre { border: 1px solid var(--rule); border-radius: 5px; }
+.review-result { border-left: 3px solid var(--accent); padding: .5rem 0 .6rem 1.3rem; margin: 1.2rem 0 1.5rem; max-width: 76ch; }
+.review-result h3 { color: #dfc59f; padding-top: 0 !important; margin: 0 0 .4rem; }
+.review-result p { font-size: 1.12rem; line-height: 1.65; margin: 0; }
+.evidence-quote { margin: .7rem 0 1.1rem; padding: .3rem 0 .3rem 1rem; border-left: 2px solid #4b515e; max-width: 85ch; }
+.evidence-quote p { margin: .35rem 0 0; line-height: 1.65; }
+.evidence-quote small { color: #c6a577; font-size: .8rem; font-variant-numeric: tabular-nums; }
 @media (max-width: 900px) {
  [data-testid="stMainBlockContainer"] { padding: 4.5rem 1.2rem 3rem; }
  .app-environment { display: none; }
  .case-ledger { grid-template-columns: 1fr 1fr; gap: 1.4rem 0; }
  .case-ledger > div:nth-child(3) { padding-left: 0; border-left: 0; }
  .case-ledger .ledger-amount strong { font-size: 2rem; }
+ [data-testid="stMain"] [data-testid="stHorizontalBlock"] { flex-direction: column; gap: 1rem; }
+ [data-testid="stMain"] [data-testid="stColumn"] { width: 100% !important; flex: 1 1 100% !important; min-width: 0; }
 }
 @media (prefers-reduced-motion: reduce) { button { transition: none !important; } }
 </style>

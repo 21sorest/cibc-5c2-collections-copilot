@@ -20,6 +20,9 @@ data/
 *.duckdb.wal
 *.parquet
 *.wav
+*.mp4
+*.mov
+*.webm
 
 # Temporary files
 tmp/
@@ -42,3 +45,6 @@ submission/*
 Build Phase/
 System Design Phase/
 collection hackathon.pdf
+
+# Local input files.
+/extra_*.csv

@@ -1,6 +1,8 @@
 """Local synthetic-data Collections Copilot demo."""
 from datetime import datetime, timezone
 import json
+import csv
+import io
 from html import escape
 import time
 
@@ -19,6 +21,27 @@ from calls import post_call
 from local_llm import MODEL as LOCAL_MODEL, enhance_summary as enhance_local_summary
 from speech import approved_cached_audio
 from trained_llm import available as trained_available, enhance_summary as enhance_trained_summary
+
+def review_result(title,text):
+    st.markdown(f'<section class="review-result"><h3>{escape(title)}</h3><p>{escape(text)}</p></section>',unsafe_allow_html=True)
+
+
+def evidence_fields(values):
+    """Readable field/value evidence; original nested values remain available below."""
+    st.dataframe([{'Evidence':key.replace('_',' ').capitalize(),
+        'Value':'Unknown' if value is None else ('Yes' if value else 'No') if isinstance(value,bool)
+        else ', '.join(map(str,value)) if isinstance(value,list) else json.dumps(value,ensure_ascii=False,default=str) if isinstance(value,dict) else str(value)}
+        for key,value in values.items()],hide_index=True,width='stretch')
+
+
+def transcript_evidence(segments):
+    if not segments:
+        st.caption('No qualifying transcript evidence extracted. Review the recording.')
+    for segment in segments:
+        seconds=float(segment.get('start_sec',0))
+        label=f"{int(seconds)//60:02d}:{seconds%60:04.1f} · {str(segment.get('speaker','unassigned')).capitalize()}"
+        st.markdown(f'<div class="evidence-quote"><small>{escape(label)}</small><p>{escape(str(segment.get("text","")))}</p></div>',unsafe_allow_html=True)
+
 
 st.set_page_config(page_title='Collections Copilot',page_icon='◈',layout='wide')
 st.html((ROOT/'ui.css').read_text(encoding='utf-8'))
@@ -148,18 +171,21 @@ with connection as con:
                 st.error(str(error))
         conversation_draft=st.session_state.get('conversation_draft')
         if conversation_draft and conversation_draft['case_id']==case_id.strip():
-            st.write(conversation_draft['suggested_reply'])
+            review_result('Suggested response',conversation_draft['suggested_reply'])
             if conversation_draft['payment_request_paused']:
                 st.warning('Pause payment requests pending specialist review. This screen grants no contact permission.')
             for prompt in conversation_draft['employee_prompts']:
                 st.write('• '+prompt)
             with st.expander('Detected signals and model evidence'):
-                st.json({'rules':conversation_draft['rules_signals'],'trained':conversation_draft['model_signals']})
+                st.dataframe([{'Signal':name.capitalize(),'Rule detection':'Detected' if detected else 'Not detected',
+                    'Model flag':{True:'Flagged',False:'Not flagged',None:'Unavailable'}.get(conversation_draft['model_signals'].get(name,{}).get('flag')),
+                    'Model score':conversation_draft['model_signals'].get(name,{}).get('score')}
+                    for name,detected in conversation_draft['rules_signals'].items()],hide_index=True,width='stretch')
                 st.caption('Model scores are uncalibrated. Rare-class model flags do not replace the rules or policy checks.')
             with st.expander('Current policy evidence'):
                 for policy in conversation_draft['policies']:
                     st.caption(policy['sql_or_sources'])
-                    st.text(policy['answer'])
+                    st.markdown(policy['answer'])
             st.text_area('Draft conversation note for review',value=conversation_draft['summary'],disabled=True)
             with st.form('conversation_review:'+case_id.strip()):
                 conversation_decision=st.radio('Conversation review decision',['accept','edit','reject'],horizontal=True)
@@ -181,8 +207,7 @@ with connection as con:
                 st.error(str(error))
         proposal=st.session_state.get('decision_proposal')
         if proposal and proposal['case_id']==case_id.strip() and proposal['decision_time']==when.isoformat():
-            st.write(proposal['next_best_action'])
-            st.write(proposal['explanation'])
+            review_result(proposal['next_best_action'],proposal['explanation'])
             if proposal.get('payment_request_paused'):
                 st.warning('Payment requests are paused for this proposal. Review the restrictions and applicable policy.')
             if proposal.get('review_priority'):
@@ -220,11 +245,17 @@ with connection as con:
                 st.caption('This order supports investigation. It grants no contact permission and does not establish the best treatment.')
             if proposal.get('timing_review'):
                 with st.expander('Timing evidence and permitted window'):
-                    st.json(proposal['timing_review'])
+                    evidence_fields(proposal['timing_review'])
             st.subheader('Staff requirements and candidates')
             st.write(proposal.get('routing_explanation',''))
             if proposal.get('routing_requirements'):
-                st.json(proposal['routing_requirements'])
+                requirements=proposal['routing_requirements']
+                skills=', '.join(requirements.get('skills',[])) or 'No additional skills specified'
+                st.write('Required skills: '+skills.replace('_',' '))
+                st.caption('Language: '+str(requirements.get('language') or 'Needs verification')+' · Site: '+str(requirements.get('required_site') or 'No site requirement'))
+                with st.expander('All routing requirements and safeguard evidence'):
+                    evidence_fields(requirements)
+                    st.json(requirements)
             st.dataframe(proposal['routing_candidates'],hide_index=True)
             if proposal.get('roster_exclusions'):
                 with st.expander('Why staff were excluded'):
@@ -251,7 +282,9 @@ with connection as con:
                 audio_path=safe_file(DEFAULT_RELEASE,audio_body['file_path'])
                 if audio_path.exists():
                     st.audio(str(audio_path))
-                st.json(audio_body['segments'])
+                transcript_evidence(audio_body['segments'])
+                with st.expander('Segment timestamps and source data'):
+                    st.dataframe(audio_body['segments'],hide_index=True,width='stretch')
                 st.caption('Pretrained '+audio_body['model']+' · CPU int8 · Speaker attribution requires employee review')
         if st.button('Review latest matched call',type='primary'):
             try:
@@ -276,15 +309,15 @@ with connection as con:
             if issue_count:
                 st.warning(str(issue_count)+' checklist item(s) have potential issues. Review their evidence first; these are detector candidates, not confirmed violations.')
             for item in sorted(call['qa'],key=lambda item:item['status']!='potential_issue'):
-                with st.expander(item['item_code']+': '+item['status']):
+                with st.expander(item['item_code']+' · '+item['status'].replace('_',' ').capitalize()):
                     st.write(item['reason'])
                     if item.get('critical_flag'):
                         st.caption('Critical checklist item. Employee evidence review required.')
                     if item.get('applicability'):
                         st.caption('Applicability: '+str(item['applicability']))
                     if item.get('observations'):
-                        st.json(item['observations'])
-                    st.json(item['evidence'])
+                        evidence_fields(item['observations'])
+                    transcript_evidence(item['evidence'])
             for limitation in call['limitations']:
                 st.caption(limitation)
             with st.form('call_review:'+case_id.strip()+':'+call['transcript_id']):
@@ -338,7 +371,7 @@ with connection as con:
         saved=st.session_state.get('ai_brief')
         if saved and saved[0]==brief_key:
             brief=saved[1]
-        st.write(brief['summary'])
+        review_result('Review summary',brief['summary'])
         gate=brief['contact_gate']
         if gate['eligible']:
             st.success('Proposed contact passed the demo policy checks. Employee review is still required.')
@@ -361,11 +394,22 @@ with connection as con:
     with questions:
         st.caption('Supported examples: average DPD by queue; open cases by bucket; promise-kept rate in August 2026; contact frequency; hardship policy; recorded call summary for a case.')
         question=st.text_input('Collections question',value='How many collections cases are open today, by current bucket?')
+        question_key=(actor['name'],actor['role'],actor.get('agent_id'),question)
         if st.button('Answer with evidence'):
+            st.session_state.pop('question_result',None)
             try:
-                result=answer(con,question,actor=actor)
-                (st.warning if result['refused'] else st.write)(result['answer'])
-                with st.expander('SQL or sources',expanded=True):
-                    st.code(result['sql_or_sources'])
+                st.session_state['question_result']=(question_key,answer(con,question,actor=actor))
             except Exception:
                 st.error('The source query failed. No answer was guessed; employee review is required.')
+        saved_answer=st.session_state.get('question_result')
+        if saved_answer and saved_answer[0]==question_key:
+            result=saved_answer[1]
+            if result['refused']:
+                st.warning(result['answer'])
+            elif result.get('rows'):
+                # Read the returned CSV as strings, retaining IDs, decimals and null cells.
+                st.dataframe(list(csv.DictReader(io.StringIO(result['answer']))),hide_index=True,width='stretch')
+            else:
+                st.write(result['answer'])
+            with st.expander('SQL or sources'):
+                st.code(result['sql_or_sources'])
