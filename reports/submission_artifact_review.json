@@ -1,0 +1,26 @@
+{
+  "files": {
+    "submission\\5C2_pitch_draft_v6.pdf": {
+      "bytes": 902788,
+      "sha256": "c8cf2dafb914e03832a175ce787dbcdca2e2f2969d9a61b0705e8ee651391e19"
+    },
+    "submission\\5C2_pitch_draft_v6.pptx": {
+      "bytes": 37666,
+      "sha256": "4809dca264c675566576bb2d79bc6c28f6001b21c52a4b1327e593d6f5f637ff"
+    },
+    "submission\\5C2_rubric_brief.pdf": {
+      "bytes": 710945,
+      "sha256": "13b052aa596af131e586a84e6e22d1e31c39d89fd0bf3fd63700a1dc6a8fc8c0"
+    },
+    "submission\\5C2_rubric_brief_v6.pptx": {
+      "bytes": 27778,
+      "sha256": "89e879f5b67229a6762e402f88f59dd8c7eda165f1c3355f2d79dea850c6193a"
+    }
+  },
+  "pdf_pages": {
+    "pitch": 9,
+    "rubric_brief": 6
+  },
+  "visual_review": "Changed pitch slide8 and rubric slides3/5 inspected individually; other renders byte-identical to previously inspected v5 slides.",
+  "native_powerpoint_execution_tested": false
+}

@@ -1,0 +1,23 @@
+flowchart TD
+    release["Synthetic release: 31 CSV and Parquet tables, policies, transcripts"] --> foundation["Python + DuckDB: validation, deduplication, five-system identity matching"]
+    foundation --> quarantine["Restricted records: matching evidence and quarantine reasons"]
+    foundation --> approved["Curated cases, accounts, interactions and golden C360"]
+    approved --> features["12 v0.5 case features: one persisted serving definition"]
+    approved --> training["Customer-separated factual corpus and local Qwen LoRA experiment"]
+    training --> ai
+    release --> text["Shared rules and local text classifier: grouped development evaluation"]
+    text --> features
+    release --> audio["Verified synthetic recordings: local Whisper transcription, employee speaker review"]
+    audio --> workspace
+    release --> questions["Trusted SQL catalogue and applicable policy retrieval"]
+    features --> workspace["Local Streamlit case workspace"]
+    approved --> workspace
+    questions --> workspace
+    workspace --> gates["Deterministic consent, hold, rolling contact-count and time checks"]
+    workspace --> ai["Local Qwen / team LoRA / optional OpenAI: exact cited fields and deterministic rendering"]
+    workspace --> proposals["Conversation assistance, action/channel/routing proposals, post-call summary and QA evidence"]
+    proposals --> human
+    ai --> human["Employee accept, edit or reject; no automatic action"]
+    gates --> human
+    human --> audit["SQLite review history: verify existing chain before append"]
+    questions --> benchmark["System-generated benchmark CSV; development numeric checks"]

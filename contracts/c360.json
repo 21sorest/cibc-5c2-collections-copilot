@@ -1,0 +1,54 @@
+{
+  "contract_id": "DC-C360-001",
+  "version": "0.1",
+  "owner": "Collections Analytics",
+  "technical_steward": "Team 5C2",
+  "dataset": "golden.c360",
+  "grain": "One accepted golden customer per current snapshot",
+  "primary_key": ["golden_customer_id", "as_of_date"],
+  "schema": {
+    "golden_customer_id": {"type": "string", "nullable": false},
+    "as_of_date": {"type": "date", "nullable": false},
+    "definition_version": {"type": "string", "nullable": false},
+    "linked_accounts": {"type": "integer", "nullable": false},
+    "credit_loan_accounts": {"type": "integer", "nullable": false},
+    "known_credit_loan_balances": {"type": "integer", "nullable": false},
+    "credit_loan_outstanding_cad": {"type": "decimal(38,2)", "nullable": true},
+    "deposit_accounts": {"type": "integer", "nullable": false},
+    "deposit_balance_cad": {"type": "decimal(38,2)", "nullable": true},
+    "credit_loan_past_due_cad": {"type": "decimal(38,2)", "nullable": true},
+    "max_account_dpd": {"type": "integer", "nullable": true},
+    "linked_cases": {"type": "integer", "nullable": false},
+    "open_cases": {"type": "integer", "nullable": false},
+    "recorded_hardship_flag": {"type": "boolean", "nullable": true},
+    "financial_coverage": {"type": "string", "nullable": false}
+  },
+  "quality_rules": [
+    "Golden keys and source-system identity keys are unique.",
+    "Accepted mappings resolve to a golden customer; quarantined mappings never carry an approved golden ID.",
+    "Conflicting current entity payloads are quarantined, not chosen arbitrarily.",
+    "Past-due amounts and DPD must be nonnegative; invalid required dates are quarantined.",
+    "Case-account and interaction links must agree on the golden customer.",
+    "Credit and loan amounts aggregate independently of cases and interactions; deposit balances are separate.",
+    "Missing money remains null; known-balance and linked-account counts describe coverage.",
+    "Matching-only PII and protected attributes are excluded from this product."
+  ],
+  "allowed_uses": ["Synthetic-data agent case preparation", "Approved aggregate analysis"],
+  "prohibited_uses": ["Marketing", "Protected-attribute ranking", "Autonomous customer contact", "Automatic repayment changes", "Historical training without point-in-time feature validation"],
+  "refresh": {
+    "prototype": "Manual transactional rebuild using pipeline.py build",
+    "target": "Daily, subject to confirmed upstream availability",
+    "snapshot_date": "2026-09-28",
+    "failure_handling": "Rollback the database transaction and preserve the prior successful build. Never treat a failed rebuild as fresh data."
+  },
+  "lineage": ["restricted.identity_map", "curated.accounts", "curated.cases", "curated.case_accounts"],
+  "limitations": [
+    "Confidence is an evidence category, not a calibrated probability.",
+    "CRM duplicate pointer chains and uncertain identity matches require review.",
+    "Amounts cover accepted linked accounts only; unmatched accounts are not implicitly zero.",
+    "Financial hardship is a recorded case fact, not inferred from a deposit balance.",
+    "DuckDB schema separation is organizational, not an access-control boundary. The local app checks account roles and agent case assignments; direct database access remains a deployment responsibility.",
+    "Consent/action gates are applied by the assistance layer, not this financial product. Historical point-in-time feature snapshots are not implemented."
+  ],
+  "design_basis": "Release example DC-COLL-001 adapted from contact_history to the golden C360 product"
+}

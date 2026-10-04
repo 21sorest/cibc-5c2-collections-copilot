@@ -1,0 +1,54 @@
+{
+  "as_of_date": "2026-09-28",
+  "definition_version": "features-v0.5",
+  "sql_sha256": "b9dd894c6edbdd98b05982b2d638a626875ef653ce3e5b977d20069d920c6b6c",
+  "cases": 338295,
+  "features": [
+    "case_max_dpd",
+    "case_overdue_cad",
+    "days_since_payment",
+    "broken_ptp_90d",
+    "kept_ptp_rate_90d",
+    "open_ptp_days_to_due",
+    "salary_decline_ratio",
+    "contact_attempts_7d",
+    "channel_rpc_rate_90d",
+    "hardship_mention",
+    "callback_request",
+    "action_eligibility"
+  ],
+  "extractor": "rules-v0.4",
+  "parity_sample": 100,
+  "eligibility_counts": [
+    [
+      "call_cap_reached",
+      1446
+    ],
+    [
+      "dispute_review",
+      12495
+    ],
+    [
+      "hold_cease",
+      10630
+    ],
+    [
+      "hold_deceased",
+      2087
+    ],
+    [
+      "hold_insolvency",
+      9558
+    ],
+    [
+      "representative_review",
+      8585
+    ],
+    [
+      "requires_live_policy_check",
+      293494
+    ]
+  ],
+  "missing_salary_ratio": 281043,
+  "duration_seconds": 158.47
+}

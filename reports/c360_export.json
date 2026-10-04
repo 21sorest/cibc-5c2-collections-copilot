@@ -1,0 +1,11 @@
+{
+  "snapshot_date": "2026-09-28",
+  "rows": 1011944,
+  "file": "c360.parquet",
+  "sha256": "548c661d9496fcd259f27c80afa38d2ae012ca93e9a88cb1b0012f8ce2abf2c8",
+  "bytes": 8254444,
+  "generator": "python export_c360.py",
+  "source_dataset": "https://huggingface.co/datasets/nuxsh/maple-collections-hackathon",
+  "synthetic": true,
+  "publication_status": "local package only; no upload performed"
+}

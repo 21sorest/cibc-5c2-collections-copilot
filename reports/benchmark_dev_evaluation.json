@@ -1,0 +1,112 @@
+{
+  "scope": "public development answers only; numeric table checks; document/refusal/transcript answers require semantic review",
+  "results": [
+    {
+      "question_id": "BQ-002",
+      "status": "requires_semantic_review",
+      "refused": false
+    },
+    {
+      "question_id": "BQ-003",
+      "status": "passed",
+      "differences": []
+    },
+    {
+      "question_id": "BQ-004",
+      "status": "passed",
+      "differences": []
+    },
+    {
+      "question_id": "BQ-005",
+      "status": "requires_semantic_review",
+      "refused": false
+    },
+    {
+      "question_id": "BQ-006",
+      "status": "passed",
+      "differences": []
+    },
+    {
+      "question_id": "BQ-007",
+      "status": "passed",
+      "differences": []
+    },
+    {
+      "question_id": "BQ-010",
+      "status": "passed",
+      "differences": []
+    },
+    {
+      "question_id": "BQ-011",
+      "status": "passed",
+      "differences": []
+    },
+    {
+      "question_id": "BQ-012",
+      "status": "passed",
+      "differences": []
+    },
+    {
+      "question_id": "BQ-016",
+      "status": "requires_semantic_review",
+      "refused": false
+    },
+    {
+      "question_id": "BQ-017",
+      "status": "passed",
+      "differences": []
+    },
+    {
+      "question_id": "BQ-018",
+      "status": "requires_semantic_review",
+      "refused": true
+    },
+    {
+      "question_id": "BQ-019",
+      "status": "requires_semantic_review",
+      "refused": false
+    },
+    {
+      "question_id": "BQ-022",
+      "status": "requires_semantic_review",
+      "refused": false
+    },
+    {
+      "question_id": "BQ-024",
+      "status": "requires_semantic_review",
+      "refused": true
+    },
+    {
+      "question_id": "BQ-026",
+      "status": "requires_semantic_review",
+      "refused": false
+    },
+    {
+      "question_id": "BQ-028",
+      "status": "passed",
+      "differences": []
+    },
+    {
+      "question_id": "BQ-031",
+      "status": "requires_semantic_review",
+      "refused": true
+    },
+    {
+      "question_id": "BQ-032",
+      "status": "passed",
+      "differences": []
+    },
+    {
+      "question_id": "BQ-034",
+      "status": "passed",
+      "differences": []
+    },
+    {
+      "question_id": "BQ-035",
+      "status": "passed",
+      "differences": []
+    }
+  ],
+  "passed": 12,
+  "failed": 0
+}

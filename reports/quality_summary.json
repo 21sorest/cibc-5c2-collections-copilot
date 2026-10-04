@@ -1,0 +1,523 @@
+{
+  "as_of_date": "2026-09-28",
+  "duckdb_version": "1.5.6",
+  "duration_seconds": 245.2,
+  "sources": [
+    {
+      "table": "customers",
+      "format": "csv",
+      "declared_rows": 1020000,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "card_accounts",
+      "format": "csv",
+      "declared_rows": 660000,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "loan_accounts",
+      "format": "csv",
+      "declared_rows": 404500,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "deposit_accounts",
+      "format": "csv",
+      "declared_rows": 780000,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "collections_cases",
+      "format": "csv",
+      "declared_rows": 367229,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "contact_history",
+      "format": "csv",
+      "declared_rows": 2688337,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "promises_to_pay",
+      "format": "csv",
+      "declared_rows": 238815,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "agent_notes",
+      "format": "csv",
+      "declared_rows": 760594,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "call_transcripts",
+      "format": "csv",
+      "declared_rows": 25000,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "voice_samples",
+      "format": "csv",
+      "declared_rows": 2000,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "external",
+      "format": "csv",
+      "declared_rows": 1000000,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "loan_instalments",
+      "format": "parquet",
+      "declared_rows": 14832472,
+      "files": 280
+    },
+    {
+      "table": "transactions",
+      "format": "parquet",
+      "declared_rows": 12401924,
+      "files": 220
+    },
+    {
+      "table": "card_statements",
+      "format": "parquet",
+      "declared_rows": 7531283,
+      "files": 220
+    },
+    {
+      "table": "account_monthly_snapshot",
+      "format": "parquet",
+      "declared_rows": 12569692,
+      "files": 80
+    },
+    {
+      "table": "bureau_history",
+      "format": "parquet",
+      "declared_rows": 4679562,
+      "files": 80
+    },
+    {
+      "table": "salary_credit_history",
+      "format": "parquet",
+      "declared_rows": 6000000,
+      "files": 220
+    },
+    {
+      "table": "model_scores",
+      "format": "csv",
+      "declared_rows": 1718841,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "offers",
+      "format": "csv",
+      "declared_rows": 40767,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "metric_definitions",
+      "format": "csv",
+      "declared_rows": 15,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "benchmark_questions",
+      "format": "csv",
+      "declared_rows": 35,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "reference_documents",
+      "format": "csv",
+      "declared_rows": 19,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "hardship_programs",
+      "format": "csv",
+      "declared_rows": 18,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "qa_checklist",
+      "format": "csv",
+      "declared_rows": 10,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "agents",
+      "format": "csv",
+      "declared_rows": 1000,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "case_assignment_history",
+      "format": "csv",
+      "declared_rows": 423830,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "agent_shifts",
+      "format": "csv",
+      "declared_rows": 15317,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "channel_capacity",
+      "format": "csv",
+      "declared_rows": 287,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "ops_events",
+      "format": "csv",
+      "declared_rows": 6,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "geo_reference",
+      "format": "csv",
+      "declared_rows": 656,
+      "added_columns": [],
+      "missing_columns": []
+    },
+    {
+      "table": "code_lookups",
+      "format": "csv",
+      "declared_rows": 113,
+      "added_columns": [],
+      "missing_columns": []
+    }
+  ],
+  "quality_counts": [
+    {
+      "source": "cards",
+      "issue": "accepted_quality",
+      "affected_records": 607266
+    },
+    {
+      "source": "cards",
+      "issue": "duplicate_current_rows_removed",
+      "affected_records": 0
+    },
+    {
+      "source": "cards",
+      "issue": "input_rows",
+      "affected_records": 660000
+    },
+    {
+      "source": "cards",
+      "issue": "invalid_money_or_dpd",
+      "affected_records": 52734
+    },
+    {
+      "source": "cards",
+      "issue": "served_accounts",
+      "affected_records": 270770
+    },
+    {
+      "source": "case_account_links",
+      "issue": "accepted",
+      "affected_records": 206812
+    },
+    {
+      "source": "case_account_links",
+      "issue": "customer_mismatch",
+      "affected_records": 432
+    },
+    {
+      "source": "case_account_links",
+      "issue": "missing_or_quarantined_account",
+      "affected_records": 142026
+    },
+    {
+      "source": "cases",
+      "issue": "accepted",
+      "affected_records": 338295
+    },
+    {
+      "source": "cases",
+      "issue": "duplicate_rows_removed",
+      "affected_records": 0
+    },
+    {
+      "source": "cases",
+      "issue": "input_rows",
+      "affected_records": 367229
+    },
+    {
+      "source": "cases",
+      "issue": "invalid_account_list",
+      "affected_records": 17778
+    },
+    {
+      "source": "cases",
+      "issue": "unresolved_customer",
+      "affected_records": 11156
+    },
+    {
+      "source": "contacts",
+      "issue": "accepted",
+      "affected_records": 2425462
+    },
+    {
+      "source": "contacts",
+      "issue": "account_customer_mismatch",
+      "affected_records": 2430
+    },
+    {
+      "source": "contacts",
+      "issue": "customer_reference_mismatch",
+      "affected_records": 24405
+    },
+    {
+      "source": "contacts",
+      "issue": "duplicate_rows_removed",
+      "affected_records": 0
+    },
+    {
+      "source": "contacts",
+      "issue": "input_rows",
+      "affected_records": 2688337
+    },
+    {
+      "source": "contacts",
+      "issue": "unresolved_case",
+      "affected_records": 236040
+    },
+    {
+      "source": "core_banking",
+      "issue": "accepted_quality",
+      "affected_records": 780000
+    },
+    {
+      "source": "core_banking",
+      "issue": "duplicate_current_rows_removed",
+      "affected_records": 0
+    },
+    {
+      "source": "core_banking",
+      "issue": "input_rows",
+      "affected_records": 780000
+    },
+    {
+      "source": "core_banking",
+      "issue": "served_accounts",
+      "affected_records": 523832
+    },
+    {
+      "source": "customers",
+      "issue": "accepted_duplicate_pointers",
+      "affected_records": 4758
+    },
+    {
+      "source": "customers",
+      "issue": "conflicting_key_rows",
+      "affected_records": 0
+    },
+    {
+      "source": "customers",
+      "issue": "input_rows",
+      "affected_records": 1020000
+    },
+    {
+      "source": "customers",
+      "issue": "missing_key_rows",
+      "affected_records": 0
+    },
+    {
+      "source": "customers",
+      "issue": "missing_or_invalid_dob",
+      "affected_records": 5026
+    },
+    {
+      "source": "customers",
+      "issue": "missing_or_masked_phone",
+      "affected_records": 14459
+    },
+    {
+      "source": "customers",
+      "issue": "quarantined_keys",
+      "affected_records": 3298
+    },
+    {
+      "source": "customers",
+      "issue": "repeated_key_rows",
+      "affected_records": 0
+    },
+    {
+      "source": "lending",
+      "issue": "accepted_quality",
+      "affected_records": 372321
+    },
+    {
+      "source": "lending",
+      "issue": "duplicate_current_rows_removed",
+      "affected_records": 0
+    },
+    {
+      "source": "lending",
+      "issue": "input_rows",
+      "affected_records": 404500
+    },
+    {
+      "source": "lending",
+      "issue": "invalid_money_or_dpd",
+      "affected_records": 32179
+    },
+    {
+      "source": "lending",
+      "issue": "served_accounts",
+      "affected_records": 347469
+    },
+    {
+      "source": "notes",
+      "issue": "accepted",
+      "affected_records": 678595
+    },
+    {
+      "source": "notes",
+      "issue": "account_customer_mismatch",
+      "affected_records": 595
+    },
+    {
+      "source": "notes",
+      "issue": "duplicate_rows_removed",
+      "affected_records": 0
+    },
+    {
+      "source": "notes",
+      "issue": "input_rows",
+      "affected_records": 760594
+    },
+    {
+      "source": "notes",
+      "issue": "missing_text",
+      "affected_records": 21757
+    },
+    {
+      "source": "notes",
+      "issue": "unresolved_case",
+      "affected_records": 59647
+    },
+    {
+      "source": "promises",
+      "issue": "accepted",
+      "affected_records": 219789
+    },
+    {
+      "source": "promises",
+      "issue": "account_customer_mismatch",
+      "affected_records": 215
+    },
+    {
+      "source": "promises",
+      "issue": "duplicate_rows_removed",
+      "affected_records": 0
+    },
+    {
+      "source": "promises",
+      "issue": "input_rows",
+      "affected_records": 238815
+    },
+    {
+      "source": "promises",
+      "issue": "unresolved_case",
+      "affected_records": 18811
+    }
+  ],
+  "identity_counts": [
+    {
+      "source_system": "cards",
+      "status": "accepted",
+      "source_keys": 228590
+    },
+    {
+      "source_system": "cards",
+      "status": "quarantined",
+      "source_keys": 321410
+    },
+    {
+      "source_system": "collections",
+      "status": "accepted",
+      "source_keys": 277435
+    },
+    {
+      "source_system": "collections",
+      "status": "quarantined",
+      "source_keys": 10991
+    },
+    {
+      "source_system": "core_banking",
+      "status": "accepted",
+      "source_keys": 437269
+    },
+    {
+      "source_system": "core_banking",
+      "status": "quarantined",
+      "source_keys": 206933
+    },
+    {
+      "source_system": "crm",
+      "status": "accepted",
+      "source_keys": 1016702
+    },
+    {
+      "source_system": "crm",
+      "status": "quarantined",
+      "source_keys": 3298
+    },
+    {
+      "source_system": "lending",
+      "status": "accepted",
+      "source_keys": 316003
+    },
+    {
+      "source_system": "lending",
+      "status": "quarantined",
+      "source_keys": 23997
+    }
+  ],
+  "golden_customers": 1011944,
+  "checks": [
+    "All five source systems have accepted identity links",
+    "All three product sources have served account records",
+    "Golden customer keys are unique",
+    "Source identity keys are unique",
+    "Every accepted link resolves to a golden customer",
+    "Quarantined identity links have no golden ID",
+    "Account keys are unique",
+    "Case keys are unique",
+    "All served case/account links agree on customer identity",
+    "Served interactions have no contradictory resolved account owner",
+    "Served transcripts agree with case and resolved contact provenance",
+    "C360 credit/loan totals match separately aggregated accounts",
+    "C360 matches its contract and excludes matching-only/protected fields"
+  ]
+}

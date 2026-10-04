@@ -1,0 +1,21 @@
+{
+  "case_id": "CS-2026-100014",
+  "generator": "local:Qwen2.5-0.5B-Instruct-team-LoRA",
+  "metadata": {
+    "team_finetuned": true,
+    "trained_from_scratch": false,
+    "adapter_sha256": "4f9e6da6877c8a96bd52635eae5e95d1dc2ca3d17cbbd0e6befbae2174c56844",
+    "input_sha256": "49d53298ed91553460a1e8068cd36706e4d02b7a8ee8eaa318c7a524df2e2e6a",
+    "latency_seconds_including_load": 10.344,
+    "validation": "Exact cited values and complete required fields; deterministic rendering; employee review required"
+  },
+  "unchanged_fields": [
+    "case_id",
+    "proposed_step",
+    "contact_gate",
+    "feature_version",
+    "as_of_date",
+    "requires_human_review"
+  ],
+  "controls_unchanged": true
+}

@@ -1,0 +1,6 @@
+# Isolated .venv-training; install torch's CUDA wheel from the official cu126 index first.
+torch==2.7.1
+transformers==4.57.6
+peft==0.18.1
+accelerate==1.12.0
+duckdb==1.5.6

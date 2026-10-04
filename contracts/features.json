@@ -1,0 +1,31 @@
+{
+  "definition_version": "features-v0.5",
+  "owner": "Team 5C2 / Collections Analytics",
+  "grain": "one collections case at the supplied 2026-09-28 snapshot",
+  "implementation": "sql/features.sql plus text_signals.py rules-v0.4; approved transcript provenance comes from curated.transcripts",
+  "serving": "offline export and online case lookup both read features.case_current; there is no second live formula",
+  "history": "Historical training snapshots are unsupported because current-only case and identity facts are not point-in-time histories.",
+  "window_convention": "Inclusive calendar dates ending on the snapshot day: 7 days begins 6 days earlier, 90 days begins 89 days earlier. This is not an intraday rolling contact authorisation calculation.",
+  "features": {
+    "case_max_dpd": "Maximum of current case DPD and linked account DPD; missing account coverage is exposed separately.",
+    "case_overdue_cad": "Validated case-level total_overdue_cad; never sum it after joining child records.",
+    "days_since_payment": "Calendar days since latest known payment on a linked account; null if unknown.",
+    "broken_ptp_90d": "Recorded broken promises with observed status timestamp and due date within the defined current window; final statuses never reconstruct historical features.",
+    "kept_ptp_rate_90d": "Kept / (kept + partially_kept + broken) for promises due in the last 90 calendar dates with observed outcome by cutoff; null if denominator is zero.",
+    "open_ptp_days_to_due": "Days to the earliest future-or-today open promise; null if absent. Overdue open promises need separate review.",
+    "salary_decline_ratio": "1 - latest complete month's linked-account salary / mean of the preceding three complete months; null without all four monthly observations or with zero baseline; negative values indicate growth.",
+    "contact_attempts_7d": "Outbound non-system contacts in the seven snapshot calendar dates. Separate call count drives the provisional call-cap guard.",
+    "channel_rpc_rate_90d": "Per-channel mean of observed RPC booleans for outbound non-system contacts in 90 snapshot calendar dates; empty map when absent.",
+    "hardship_mention": "Rules-based hardship mention in notes/customer transcript turns in the last 90 dates; null without text evidence, false with evidence but no detected mention. Safeguard only, not repayment ranking.",
+    "callback_request": "Rules-based callback signal in the same text window; null without evidence. It does not authorise contact.",
+    "action_eligibility": "Provisional hold/review state. Every proposed contact also needs the live policy gate. Unknown safeguard and consent fields fail closed. No action executes automatically."
+  },
+  "source_evidence": "IDs and per-source boolean signals are retained in text_sources; raw note text, customer names and protected fields are excluded.",
+  "limitations": [
+    "Rules-based NLP is a development baseline and needs human review; public-label metrics are not held-out results.",
+    "Snapshot calendar-window counts cannot authorise a real-time rolling-window contact.",
+    "Missing source coverage is not evidence of no activity or no hardship.",
+    "Contact policy checks are for the synthetic release; production requires current facts, a provincial holiday calendar and authentication."
+  ],
+  "source_approval": "Contacts, promises and notes exclude resolved account/customer ownership contradictions. Transcript sources require approved case/customer identity and exclude resolved contradictory or quarantined contact links. Unresolved contact linkage remains explicitly unknown in curated.transcripts."
+}

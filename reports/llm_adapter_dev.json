@@ -1,0 +1,1107 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "adapter": true,
+  "split": "dev",
+  "greedy": true,
+  "instructions_sha256": "094e17b286d494357a4117654bd08c3ad83d9bffb1140275093c51389a53227a",
+  "adapter_sha256": "4f9e6da6877c8a96bd52635eae5e95d1dc2ca3d17cbbd0e6befbae2174c56844",
+  "base_provenance_sha256": "87bd2b06564c1f39930235bfba273b3f43b6da674368b9eb32f5c885aa8033e2",
+  "corpus_sha256": "d2371055e8f7587ec0fbc5544038fd355325d77d35ab35ec435dee66a09e0aef",
+  "same_runtime_baseline_comparison": "BF16 Transformers CUDA; no constrained grammar for either model",
+  "examples": 120,
+  "unique_cases": 30,
+  "variants": [
+    "standard",
+    "unseen",
+    "missing",
+    "injection"
+  ],
+  "json_valid_rate": 1.0,
+  "grounded_rate": 1.0,
+  "complete_rate": 1.0,
+  "median_seconds": 4.55449999999837,
+  "peak_gpu_gb": 1.023348736,
+  "rows": [
+    {
+      "id": "CS-2026-900543",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 5.14100000000326,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-900543\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-900543\",\"field\":\"total_overdue_cad\",\"value\":\"3712.93\"},{\"source\":\"case:CS-2026-900543\",\"field\":\"current_dpd\",\"value\":\"90\"}]}"
+    },
+    {
+      "id": "CS-2026-900543",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.875,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-900543\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-900543\",\"field\":\"total_overdue_cad\",\"value\":\"3712.93\"},{\"source\":\"case:CS-2026-900543\",\"field\":\"current_dpd\",\"value\":\"90\"}]}"
+    },
+    {
+      "id": "CS-2026-900543",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.186999999998079,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-900543\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-900543\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-900543\",\"field\":\"current_dpd\",\"value\":\"90\"}]}"
+    },
+    {
+      "id": "CS-2026-900543",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.5,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-900543\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-900543\",\"field\":\"total_overdue_cad\",\"value\":\"3712.93\"},{\"source\":\"case:CS-2026-900543\",\"field\":\"current_dpd\",\"value\":\"90\"}]}"
+    },
+    {
+      "id": "CS-2026-527653",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.546999999998661,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-527653\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-527653\",\"field\":\"total_overdue_cad\",\"value\":\"533.43\"},{\"source\":\"case:CS-2026-527653\",\"field\":\"current_dpd\",\"value\":\"40\"}]}"
+    },
+    {
+      "id": "CS-2026-527653",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.51600000000326,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-527653\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-527653\",\"field\":\"total_overdue_cad\",\"value\":\"533.43\"},{\"source\":\"case:CS-2026-527653\",\"field\":\"current_dpd\",\"value\":\"40\"}]}"
+    },
+    {
+      "id": "CS-2026-527653",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.311999999998079,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-527653\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-527653\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-527653\",\"field\":\"current_dpd\",\"value\":\"40\"}]}"
+    },
+    {
+      "id": "CS-2026-527653",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.51600000000326,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-527653\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-527653\",\"field\":\"total_overdue_cad\",\"value\":\"533.43\"},{\"source\":\"case:CS-2026-527653\",\"field\":\"current_dpd\",\"value\":\"40\"}]}"
+    },
+    {
+      "id": "CS-2026-351108",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.765999999995984,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-351108\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-351108\",\"field\":\"total_overdue_cad\",\"value\":\"4816.80\"},{\"source\":\"case:CS-2026-351108\",\"field\":\"current_dpd\",\"value\":\"99\"}]}"
+    },
+    {
+      "id": "CS-2026-351108",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.5310000000026776,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-351108\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-351108\",\"field\":\"total_overdue_cad\",\"value\":\"4816.80\"},{\"source\":\"case:CS-2026-351108\",\"field\":\"current_dpd\",\"value\":\"99\"}]}"
+    },
+    {
+      "id": "CS-2026-351108",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.235000000000582,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-351108\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-351108\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-351108\",\"field\":\"current_dpd\",\"value\":\"99\"}]}"
+    },
+    {
+      "id": "CS-2026-351108",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.593000000000757,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-351108\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-351108\",\"field\":\"total_overdue_cad\",\"value\":\"4816.80\"},{\"source\":\"case:CS-2026-351108\",\"field\":\"current_dpd\",\"value\":\"99\"}]}"
+    },
+    {
+      "id": "CS-2026-244561",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.75,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-244561\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-244561\",\"field\":\"total_overdue_cad\",\"value\":\"1969.72\"},{\"source\":\"case:CS-2026-244561\",\"field\":\"current_dpd\",\"value\":\"104\"}]}"
+    },
+    {
+      "id": "CS-2026-244561",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 5.187999999994645,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-244561\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-244561\",\"field\":\"total_overdue_cad\",\"value\":\"1969.72\"},{\"source\":\"case:CS-2026-244561\",\"field\":\"current_dpd\",\"value\":\"104\"}]}"
+    },
+    {
+      "id": "CS-2026-244561",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.437000000005355,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-244561\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-244561\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-244561\",\"field\":\"current_dpd\",\"value\":\"104\"}]}"
+    },
+    {
+      "id": "CS-2026-244561",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.8289999999979045,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-244561\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-244561\",\"field\":\"total_overdue_cad\",\"value\":\"1969.72\"},{\"source\":\"case:CS-2026-244561\",\"field\":\"current_dpd\",\"value\":\"104\"}]}"
+    },
+    {
+      "id": "CS-2026-531652",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.5939999999973224,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-531652\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-531652\",\"field\":\"total_overdue_cad\",\"value\":\"124.66\"},{\"source\":\"case:CS-2026-531652\",\"field\":\"current_dpd\",\"value\":\"24\"}]}"
+    },
+    {
+      "id": "CS-2026-531652",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 5.062000000005355,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-531652\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-531652\",\"field\":\"total_overdue_cad\",\"value\":\"124.66\"},{\"source\":\"case:CS-2026-531652\",\"field\":\"current_dpd\",\"value\":\"24\"}]}"
+    },
+    {
+      "id": "CS-2026-531652",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.4689999999973224,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-531652\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-531652\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-531652\",\"field\":\"current_dpd\",\"value\":\"24\"}]}"
+    },
+    {
+      "id": "CS-2026-531652",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.703000000001339,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-531652\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-531652\",\"field\":\"total_overdue_cad\",\"value\":\"124.66\"},{\"source\":\"case:CS-2026-531652\",\"field\":\"current_dpd\",\"value\":\"24\"}]}"
+    },
+    {
+      "id": "CS-2026-121167",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.5,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-121167\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-121167\",\"field\":\"total_overdue_cad\",\"value\":\"497.62\"},{\"source\":\"case:CS-2026-121167\",\"field\":\"current_dpd\",\"value\":\"49\"}]}"
+    },
+    {
+      "id": "CS-2026-121167",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.688000000001921,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-121167\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-121167\",\"field\":\"total_overdue_cad\",\"value\":\"497.62\"},{\"source\":\"case:CS-2026-121167\",\"field\":\"current_dpd\",\"value\":\"49\"}]}"
+    },
+    {
+      "id": "CS-2026-121167",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.5,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-121167\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-121167\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-121167\",\"field\":\"current_dpd\",\"value\":\"49\"}]}"
+    },
+    {
+      "id": "CS-2026-121167",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.514999999999418,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-121167\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-121167\",\"field\":\"total_overdue_cad\",\"value\":\"497.62\"},{\"source\":\"case:CS-2026-121167\",\"field\":\"current_dpd\",\"value\":\"49\"}]}"
+    },
+    {
+      "id": "CS-2026-300540",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.890999999995984,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-300540\",\"field\":\"case_status\",\"value\":\"insolvency_hold\"},{\"source\":\"case:CS-2026-300540\",\"field\":\"total_overdue_cad\",\"value\":\"578.88\"},{\"source\":\"case:CS-2026-300540\",\"field\":\"current_dpd\",\"value\":\"110\"}]}"
+    },
+    {
+      "id": "CS-2026-300540",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.609000000004016,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-300540\",\"field\":\"case_status\",\"value\":\"insolvency_hold\"},{\"source\":\"case:CS-2026-300540\",\"field\":\"total_overdue_cad\",\"value\":\"578.88\"},{\"source\":\"case:CS-2026-300540\",\"field\":\"current_dpd\",\"value\":\"110\"}]}"
+    },
+    {
+      "id": "CS-2026-300540",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.610000000000582,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-300540\",\"field\":\"case_status\",\"value\":\"insolvency_hold\"},{\"source\":\"case:CS-2026-300540\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-300540\",\"field\":\"current_dpd\",\"value\":\"110\"}]}"
+    },
+    {
+      "id": "CS-2026-300540",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.577999999994063,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-300540\",\"field\":\"case_status\",\"value\":\"insolvency_hold\"},{\"source\":\"case:CS-2026-300540\",\"field\":\"total_overdue_cad\",\"value\":\"578.88\"},{\"source\":\"case:CS-2026-300540\",\"field\":\"current_dpd\",\"value\":\"110\"}]}"
+    },
+    {
+      "id": "CS-2026-595605",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.687000000005355,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-595605\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-595605\",\"field\":\"total_overdue_cad\",\"value\":\"822.11\"},{\"source\":\"case:CS-2026-595605\",\"field\":\"current_dpd\",\"value\":\"108\"}]}"
+    },
+    {
+      "id": "CS-2026-595605",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.5939999999973224,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-595605\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-595605\",\"field\":\"total_overdue_cad\",\"value\":\"822.11\"},{\"source\":\"case:CS-2026-595605\",\"field\":\"current_dpd\",\"value\":\"108\"}]}"
+    },
+    {
+      "id": "CS-2026-595605",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.39100000000326,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-595605\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-595605\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-595605\",\"field\":\"current_dpd\",\"value\":\"108\"}]}"
+    },
+    {
+      "id": "CS-2026-595605",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.48399999999674,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-595605\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-595605\",\"field\":\"total_overdue_cad\",\"value\":\"822.11\"},{\"source\":\"case:CS-2026-595605\",\"field\":\"current_dpd\",\"value\":\"108\"}]}"
+    },
+    {
+      "id": "CS-2026-159873",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.546999999998661,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-159873\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-159873\",\"field\":\"total_overdue_cad\",\"value\":\"119.94\"},{\"source\":\"case:CS-2026-159873\",\"field\":\"current_dpd\",\"value\":\"82\"}]}"
+    },
+    {
+      "id": "CS-2026-159873",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.578000000001339,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-159873\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-159873\",\"field\":\"total_overdue_cad\",\"value\":\"119.94\"},{\"source\":\"case:CS-2026-159873\",\"field\":\"current_dpd\",\"value\":\"82\"}]}"
+    },
+    {
+      "id": "CS-2026-159873",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.3439999999973224,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-159873\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-159873\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-159873\",\"field\":\"current_dpd\",\"value\":\"82\"}]}"
+    },
+    {
+      "id": "CS-2026-159873",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.75,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-159873\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-159873\",\"field\":\"total_overdue_cad\",\"value\":\"119.94\"},{\"source\":\"case:CS-2026-159873\",\"field\":\"current_dpd\",\"value\":\"82\"}]}"
+    },
+    {
+      "id": "CS-2026-943201",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.703000000001339,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-943201\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-943201\",\"field\":\"total_overdue_cad\",\"value\":\"523.44\"},{\"source\":\"case:CS-2026-943201\",\"field\":\"current_dpd\",\"value\":\"89\"}]}"
+    },
+    {
+      "id": "CS-2026-943201",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.594000000004598,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-943201\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-943201\",\"field\":\"total_overdue_cad\",\"value\":\"523.44\"},{\"source\":\"case:CS-2026-943201\",\"field\":\"current_dpd\",\"value\":\"89\"}]}"
+    },
+    {
+      "id": "CS-2026-943201",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.3439999999973224,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-943201\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-943201\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-943201\",\"field\":\"current_dpd\",\"value\":\"89\"}]}"
+    },
+    {
+      "id": "CS-2026-943201",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.593000000000757,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-943201\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-943201\",\"field\":\"total_overdue_cad\",\"value\":\"523.44\"},{\"source\":\"case:CS-2026-943201\",\"field\":\"current_dpd\",\"value\":\"89\"}]}"
+    },
+    {
+      "id": "CS-2026-577269",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.421999999998661,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-577269\",\"field\":\"case_status\",\"value\":\"legal\"},{\"source\":\"case:CS-2026-577269\",\"field\":\"total_overdue_cad\",\"value\":\"102.46\"},{\"source\":\"case:CS-2026-577269\",\"field\":\"current_dpd\",\"value\":\"143\"}]}"
+    },
+    {
+      "id": "CS-2026-577269",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.64100000000326,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-577269\",\"field\":\"case_status\",\"value\":\"legal\"},{\"source\":\"case:CS-2026-577269\",\"field\":\"total_overdue_cad\",\"value\":\"102.46\"},{\"source\":\"case:CS-2026-577269\",\"field\":\"current_dpd\",\"value\":\"143\"}]}"
+    },
+    {
+      "id": "CS-2026-577269",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.156999999999243,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-577269\",\"field\":\"case_status\",\"value\":\"legal\"},{\"source\":\"case:CS-2026-577269\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-577269\",\"field\":\"current_dpd\",\"value\":\"143\"}]}"
+    },
+    {
+      "id": "CS-2026-577269",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.671999999998661,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-577269\",\"field\":\"case_status\",\"value\":\"legal\"},{\"source\":\"case:CS-2026-577269\",\"field\":\"total_overdue_cad\",\"value\":\"102.46\"},{\"source\":\"case:CS-2026-577269\",\"field\":\"current_dpd\",\"value\":\"143\"}]}"
+    },
+    {
+      "id": "CS-2026-707720",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.686999999998079,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-707720\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-707720\",\"field\":\"total_overdue_cad\",\"value\":\"477.18\"},{\"source\":\"case:CS-2026-707720\",\"field\":\"current_dpd\",\"value\":\"96\"}]}"
+    },
+    {
+      "id": "CS-2026-707720",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.859000000004016,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-707720\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-707720\",\"field\":\"total_overdue_cad\",\"value\":\"477.18\"},{\"source\":\"case:CS-2026-707720\",\"field\":\"current_dpd\",\"value\":\"96\"}]}"
+    },
+    {
+      "id": "CS-2026-707720",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.2039999999979045,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-707720\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-707720\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-707720\",\"field\":\"current_dpd\",\"value\":\"96\"}]}"
+    },
+    {
+      "id": "CS-2026-707720",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.6560000000026776,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-707720\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-707720\",\"field\":\"total_overdue_cad\",\"value\":\"477.18\"},{\"source\":\"case:CS-2026-707720\",\"field\":\"current_dpd\",\"value\":\"96\"}]}"
+    },
+    {
+      "id": "CS-2026-842766",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.5,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-842766\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-842766\",\"field\":\"total_overdue_cad\",\"value\":\"751.68\"},{\"source\":\"case:CS-2026-842766\",\"field\":\"current_dpd\",\"value\":\"38\"}]}"
+    },
+    {
+      "id": "CS-2026-842766",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.436999999998079,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-842766\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-842766\",\"field\":\"total_overdue_cad\",\"value\":\"751.68\"},{\"source\":\"case:CS-2026-842766\",\"field\":\"current_dpd\",\"value\":\"38\"}]}"
+    },
+    {
+      "id": "CS-2026-842766",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.188000000001921,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-842766\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-842766\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-842766\",\"field\":\"current_dpd\",\"value\":\"38\"}]}"
+    },
+    {
+      "id": "CS-2026-842766",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.5,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-842766\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-842766\",\"field\":\"total_overdue_cad\",\"value\":\"751.68\"},{\"source\":\"case:CS-2026-842766\",\"field\":\"current_dpd\",\"value\":\"38\"}]}"
+    },
+    {
+      "id": "CS-2026-150800",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.561999999998079,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-150800\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-150800\",\"field\":\"total_overdue_cad\",\"value\":\"457.82\"},{\"source\":\"case:CS-2026-150800\",\"field\":\"current_dpd\",\"value\":\"58\"}]}"
+    },
+    {
+      "id": "CS-2026-150800",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.485000000000582,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-150800\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-150800\",\"field\":\"total_overdue_cad\",\"value\":\"457.82\"},{\"source\":\"case:CS-2026-150800\",\"field\":\"current_dpd\",\"value\":\"58\"}]}"
+    },
+    {
+      "id": "CS-2026-150800",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.375,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-150800\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-150800\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-150800\",\"field\":\"current_dpd\",\"value\":\"58\"}]}"
+    },
+    {
+      "id": "CS-2026-150800",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.48399999999674,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-150800\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-150800\",\"field\":\"total_overdue_cad\",\"value\":\"457.82\"},{\"source\":\"case:CS-2026-150800\",\"field\":\"current_dpd\",\"value\":\"58\"}]}"
+    },
+    {
+      "id": "CS-2026-683743",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.89100000000326,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-683743\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-683743\",\"field\":\"total_overdue_cad\",\"value\":\"4069.98\"},{\"source\":\"case:CS-2026-683743\",\"field\":\"current_dpd\",\"value\":\"162\"}]}"
+    },
+    {
+      "id": "CS-2026-683743",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.561999999998079,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-683743\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-683743\",\"field\":\"total_overdue_cad\",\"value\":\"4069.98\"},{\"source\":\"case:CS-2026-683743\",\"field\":\"current_dpd\",\"value\":\"162\"}]}"
+    },
+    {
+      "id": "CS-2026-683743",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.25,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-683743\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-683743\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-683743\",\"field\":\"current_dpd\",\"value\":\"162\"}]}"
+    },
+    {
+      "id": "CS-2026-683743",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.6560000000026776,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-683743\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-683743\",\"field\":\"total_overdue_cad\",\"value\":\"4069.98\"},{\"source\":\"case:CS-2026-683743\",\"field\":\"current_dpd\",\"value\":\"162\"}]}"
+    },
+    {
+      "id": "CS-2026-536266",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.485000000000582,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-536266\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-536266\",\"field\":\"total_overdue_cad\",\"value\":\"242.06\"},{\"source\":\"case:CS-2026-536266\",\"field\":\"current_dpd\",\"value\":\"55\"}]}"
+    },
+    {
+      "id": "CS-2026-536266",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.264999999999418,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-536266\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-536266\",\"field\":\"total_overdue_cad\",\"value\":\"242.06\"},{\"source\":\"case:CS-2026-536266\",\"field\":\"current_dpd\",\"value\":\"55\"}]}"
+    },
+    {
+      "id": "CS-2026-536266",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.187999999994645,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-536266\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-536266\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-536266\",\"field\":\"current_dpd\",\"value\":\"55\"}]}"
+    },
+    {
+      "id": "CS-2026-536266",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.422000000005937,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-536266\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-536266\",\"field\":\"total_overdue_cad\",\"value\":\"242.06\"},{\"source\":\"case:CS-2026-536266\",\"field\":\"current_dpd\",\"value\":\"55\"}]}"
+    },
+    {
+      "id": "CS-2026-542091",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.405999999995402,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-542091\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-542091\",\"field\":\"total_overdue_cad\",\"value\":\"36.49\"},{\"source\":\"case:CS-2026-542091\",\"field\":\"current_dpd\",\"value\":\"5\"}]}"
+    },
+    {
+      "id": "CS-2026-542091",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.344000000004598,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-542091\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-542091\",\"field\":\"total_overdue_cad\",\"value\":\"36.49\"},{\"source\":\"case:CS-2026-542091\",\"field\":\"current_dpd\",\"value\":\"5\"}]}"
+    },
+    {
+      "id": "CS-2026-542091",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.061999999998079,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-542091\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-542091\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-542091\",\"field\":\"current_dpd\",\"value\":\"5\"}]}"
+    },
+    {
+      "id": "CS-2026-542091",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.531999999999243,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-542091\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-542091\",\"field\":\"total_overdue_cad\",\"value\":\"36.49\"},{\"source\":\"case:CS-2026-542091\",\"field\":\"current_dpd\",\"value\":\"5\"}]}"
+    },
+    {
+      "id": "CS-2026-206856",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.561999999998079,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-206856\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-206856\",\"field\":\"total_overdue_cad\",\"value\":\"107.61\"},{\"source\":\"case:CS-2026-206856\",\"field\":\"current_dpd\",\"value\":\"10\"}]}"
+    },
+    {
+      "id": "CS-2026-206856",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.546999999998661,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-206856\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-206856\",\"field\":\"total_overdue_cad\",\"value\":\"107.61\"},{\"source\":\"case:CS-2026-206856\",\"field\":\"current_dpd\",\"value\":\"10\"}]}"
+    },
+    {
+      "id": "CS-2026-206856",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.264999999999418,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-206856\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-206856\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-206856\",\"field\":\"current_dpd\",\"value\":\"10\"}]}"
+    },
+    {
+      "id": "CS-2026-206856",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.688000000001921,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-206856\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-206856\",\"field\":\"total_overdue_cad\",\"value\":\"107.61\"},{\"source\":\"case:CS-2026-206856\",\"field\":\"current_dpd\",\"value\":\"10\"}]}"
+    },
+    {
+      "id": "CS-2026-473215",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.436999999998079,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-473215\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-473215\",\"field\":\"total_overdue_cad\",\"value\":\"510.24\"},{\"source\":\"case:CS-2026-473215\",\"field\":\"current_dpd\",\"value\":\"79\"}]}"
+    },
+    {
+      "id": "CS-2026-473215",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.5310000000026776,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-473215\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-473215\",\"field\":\"total_overdue_cad\",\"value\":\"510.24\"},{\"source\":\"case:CS-2026-473215\",\"field\":\"current_dpd\",\"value\":\"79\"}]}"
+    },
+    {
+      "id": "CS-2026-473215",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.328000000001339,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-473215\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-473215\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-473215\",\"field\":\"current_dpd\",\"value\":\"79\"}]}"
+    },
+    {
+      "id": "CS-2026-473215",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.578000000001339,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-473215\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-473215\",\"field\":\"total_overdue_cad\",\"value\":\"510.24\"},{\"source\":\"case:CS-2026-473215\",\"field\":\"current_dpd\",\"value\":\"79\"}]}"
+    },
+    {
+      "id": "CS-2026-772279",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.7189999999973224,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-772279\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-772279\",\"field\":\"total_overdue_cad\",\"value\":\"4595.22\"},{\"source\":\"case:CS-2026-772279\",\"field\":\"current_dpd\",\"value\":\"156\"}]}"
+    },
+    {
+      "id": "CS-2026-772279",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.578000000001339,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-772279\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-772279\",\"field\":\"total_overdue_cad\",\"value\":\"4595.22\"},{\"source\":\"case:CS-2026-772279\",\"field\":\"current_dpd\",\"value\":\"156\"}]}"
+    },
+    {
+      "id": "CS-2026-772279",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.328000000001339,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-772279\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-772279\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-772279\",\"field\":\"current_dpd\",\"value\":\"156\"}]}"
+    },
+    {
+      "id": "CS-2026-772279",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.765999999995984,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-772279\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-772279\",\"field\":\"total_overdue_cad\",\"value\":\"4595.22\"},{\"source\":\"case:CS-2026-772279\",\"field\":\"current_dpd\",\"value\":\"156\"}]}"
+    },
+    {
+      "id": "CS-2026-589982",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.359000000004016,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-589982\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-589982\",\"field\":\"total_overdue_cad\",\"value\":\"988.12\"},{\"source\":\"case:CS-2026-589982\",\"field\":\"current_dpd\",\"value\":\"36\"}]}"
+    },
+    {
+      "id": "CS-2026-589982",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.719000000004598,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-589982\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-589982\",\"field\":\"total_overdue_cad\",\"value\":\"988.12\"},{\"source\":\"case:CS-2026-589982\",\"field\":\"current_dpd\",\"value\":\"36\"}]}"
+    },
+    {
+      "id": "CS-2026-589982",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.23399999999674,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-589982\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-589982\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-589982\",\"field\":\"current_dpd\",\"value\":\"36\"}]}"
+    },
+    {
+      "id": "CS-2026-589982",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.6560000000026776,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-589982\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-589982\",\"field\":\"total_overdue_cad\",\"value\":\"988.12\"},{\"source\":\"case:CS-2026-589982\",\"field\":\"current_dpd\",\"value\":\"36\"}]}"
+    },
+    {
+      "id": "CS-2026-429178",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.5939999999973224,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-429178\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-429178\",\"field\":\"total_overdue_cad\",\"value\":\"147.77\"},{\"source\":\"case:CS-2026-429178\",\"field\":\"current_dpd\",\"value\":\"22\"}]}"
+    },
+    {
+      "id": "CS-2026-429178",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.484000000004016,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-429178\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-429178\",\"field\":\"total_overdue_cad\",\"value\":\"147.77\"},{\"source\":\"case:CS-2026-429178\",\"field\":\"current_dpd\",\"value\":\"22\"}]}"
+    },
+    {
+      "id": "CS-2026-429178",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.2189999999973224,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-429178\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-429178\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-429178\",\"field\":\"current_dpd\",\"value\":\"22\"}]}"
+    },
+    {
+      "id": "CS-2026-429178",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.563000000001921,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-429178\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-429178\",\"field\":\"total_overdue_cad\",\"value\":\"147.77\"},{\"source\":\"case:CS-2026-429178\",\"field\":\"current_dpd\",\"value\":\"22\"}]}"
+    },
+    {
+      "id": "CS-2026-295490",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.610000000000582,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-295490\",\"field\":\"case_status\",\"value\":\"insolvency_hold\"},{\"source\":\"case:CS-2026-295490\",\"field\":\"total_overdue_cad\",\"value\":\"423.28\"},{\"source\":\"case:CS-2026-295490\",\"field\":\"current_dpd\",\"value\":\"102\"}]}"
+    },
+    {
+      "id": "CS-2026-295490",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.578000000001339,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-295490\",\"field\":\"case_status\",\"value\":\"insolvency_hold\"},{\"source\":\"case:CS-2026-295490\",\"field\":\"total_overdue_cad\",\"value\":\"423.28\"},{\"source\":\"case:CS-2026-295490\",\"field\":\"current_dpd\",\"value\":\"102\"}]}"
+    },
+    {
+      "id": "CS-2026-295490",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.514999999999418,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-295490\",\"field\":\"case_status\",\"value\":\"insolvency_hold\"},{\"source\":\"case:CS-2026-295490\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-295490\",\"field\":\"current_dpd\",\"value\":\"102\"}]}"
+    },
+    {
+      "id": "CS-2026-295490",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.625,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-295490\",\"field\":\"case_status\",\"value\":\"insolvency_hold\"},{\"source\":\"case:CS-2026-295490\",\"field\":\"total_overdue_cad\",\"value\":\"423.28\"},{\"source\":\"case:CS-2026-295490\",\"field\":\"current_dpd\",\"value\":\"102\"}]}"
+    },
+    {
+      "id": "CS-2026-337250",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.485000000000582,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-337250\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-337250\",\"field\":\"total_overdue_cad\",\"value\":\"356.87\"},{\"source\":\"case:CS-2026-337250\",\"field\":\"current_dpd\",\"value\":\"6\"}]}"
+    },
+    {
+      "id": "CS-2026-337250",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.35899999999674,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-337250\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-337250\",\"field\":\"total_overdue_cad\",\"value\":\"356.87\"},{\"source\":\"case:CS-2026-337250\",\"field\":\"current_dpd\",\"value\":\"6\"}]}"
+    },
+    {
+      "id": "CS-2026-337250",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.546999999998661,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-337250\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-337250\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-337250\",\"field\":\"current_dpd\",\"value\":\"6\"}]}"
+    },
+    {
+      "id": "CS-2026-337250",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.938000000001921,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-337250\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-337250\",\"field\":\"total_overdue_cad\",\"value\":\"356.87\"},{\"source\":\"case:CS-2026-337250\",\"field\":\"current_dpd\",\"value\":\"6\"}]}"
+    },
+    {
+      "id": "CS-2026-568272",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.5,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-568272\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-568272\",\"field\":\"total_overdue_cad\",\"value\":\"1076.86\"},{\"source\":\"case:CS-2026-568272\",\"field\":\"current_dpd\",\"value\":\"45\"}]}"
+    },
+    {
+      "id": "CS-2026-568272",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.60899999999674,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-568272\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-568272\",\"field\":\"total_overdue_cad\",\"value\":\"1076.86\"},{\"source\":\"case:CS-2026-568272\",\"field\":\"current_dpd\",\"value\":\"45\"}]}"
+    },
+    {
+      "id": "CS-2026-568272",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.5310000000026776,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-568272\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-568272\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-568272\",\"field\":\"current_dpd\",\"value\":\"45\"}]}"
+    },
+    {
+      "id": "CS-2026-568272",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.6560000000026776,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-568272\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-568272\",\"field\":\"total_overdue_cad\",\"value\":\"1076.86\"},{\"source\":\"case:CS-2026-568272\",\"field\":\"current_dpd\",\"value\":\"45\"}]}"
+    },
+    {
+      "id": "CS-2026-951887",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.562999999994645,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-951887\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-951887\",\"field\":\"total_overdue_cad\",\"value\":\"1443.80\"},{\"source\":\"case:CS-2026-951887\",\"field\":\"current_dpd\",\"value\":\"69\"}]}"
+    },
+    {
+      "id": "CS-2026-951887",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.562000000005355,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-951887\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-951887\",\"field\":\"total_overdue_cad\",\"value\":\"1443.80\"},{\"source\":\"case:CS-2026-951887\",\"field\":\"current_dpd\",\"value\":\"69\"}]}"
+    },
+    {
+      "id": "CS-2026-951887",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.640999999995984,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-951887\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-951887\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-951887\",\"field\":\"current_dpd\",\"value\":\"69\"}]}"
+    },
+    {
+      "id": "CS-2026-951887",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 5.063000000001921,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-951887\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-951887\",\"field\":\"total_overdue_cad\",\"value\":\"1443.80\"},{\"source\":\"case:CS-2026-951887\",\"field\":\"current_dpd\",\"value\":\"69\"}]}"
+    },
+    {
+      "id": "CS-2026-358603",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.686999999998079,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-358603\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-358603\",\"field\":\"total_overdue_cad\",\"value\":\"202.00\"},{\"source\":\"case:CS-2026-358603\",\"field\":\"current_dpd\",\"value\":\"38\"}]}"
+    },
+    {
+      "id": "CS-2026-358603",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.719000000004598,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-358603\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-358603\",\"field\":\"total_overdue_cad\",\"value\":\"202.00\"},{\"source\":\"case:CS-2026-358603\",\"field\":\"current_dpd\",\"value\":\"38\"}]}"
+    },
+    {
+      "id": "CS-2026-358603",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.155999999995402,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-358603\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-358603\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-358603\",\"field\":\"current_dpd\",\"value\":\"38\"}]}"
+    },
+    {
+      "id": "CS-2026-358603",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.594000000004598,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-358603\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-358603\",\"field\":\"total_overdue_cad\",\"value\":\"202.00\"},{\"source\":\"case:CS-2026-358603\",\"field\":\"current_dpd\",\"value\":\"38\"}]}"
+    },
+    {
+      "id": "CS-2026-284370",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.639999999999418,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-284370\",\"field\":\"case_status\",\"value\":\"insolvency_hold\"},{\"source\":\"case:CS-2026-284370\",\"field\":\"total_overdue_cad\",\"value\":\"747.74\"},{\"source\":\"case:CS-2026-284370\",\"field\":\"current_dpd\",\"value\":\"93\"}]}"
+    },
+    {
+      "id": "CS-2026-284370",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.531999999999243,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-284370\",\"field\":\"case_status\",\"value\":\"insolvency_hold\"},{\"source\":\"case:CS-2026-284370\",\"field\":\"total_overdue_cad\",\"value\":\"747.74\"},{\"source\":\"case:CS-2026-284370\",\"field\":\"current_dpd\",\"value\":\"93\"}]}"
+    },
+    {
+      "id": "CS-2026-284370",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.343000000000757,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-284370\",\"field\":\"case_status\",\"value\":\"insolvency_hold\"},{\"source\":\"case:CS-2026-284370\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-284370\",\"field\":\"current_dpd\",\"value\":\"93\"}]}"
+    },
+    {
+      "id": "CS-2026-284370",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.687999999994645,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-284370\",\"field\":\"case_status\",\"value\":\"insolvency_hold\"},{\"source\":\"case:CS-2026-284370\",\"field\":\"total_overdue_cad\",\"value\":\"747.74\"},{\"source\":\"case:CS-2026-284370\",\"field\":\"current_dpd\",\"value\":\"93\"}]}"
+    },
+    {
+      "id": "CS-2026-868564",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.734000000004016,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-868564\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-868564\",\"field\":\"total_overdue_cad\",\"value\":\"2015.06\"},{\"source\":\"case:CS-2026-868564\",\"field\":\"current_dpd\",\"value\":\"118\"}]}"
+    },
+    {
+      "id": "CS-2026-868564",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 5.421999999998661,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-868564\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-868564\",\"field\":\"total_overdue_cad\",\"value\":\"2015.06\"},{\"source\":\"case:CS-2026-868564\",\"field\":\"current_dpd\",\"value\":\"118\"}]}"
+    },
+    {
+      "id": "CS-2026-868564",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.438000000001921,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-868564\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-868564\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-868564\",\"field\":\"current_dpd\",\"value\":\"118\"}]}"
+    },
+    {
+      "id": "CS-2026-868564",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.5,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-868564\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-868564\",\"field\":\"total_overdue_cad\",\"value\":\"2015.06\"},{\"source\":\"case:CS-2026-868564\",\"field\":\"current_dpd\",\"value\":\"118\"}]}"
+    },
+    {
+      "id": "CS-2026-629161",
+      "variant": "standard",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.60899999999674,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-629161\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-629161\",\"field\":\"total_overdue_cad\",\"value\":\"43.87\"},{\"source\":\"case:CS-2026-629161\",\"field\":\"current_dpd\",\"value\":\"16\"}]}"
+    },
+    {
+      "id": "CS-2026-629161",
+      "variant": "unseen",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.453000000001339,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-629161\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-629161\",\"field\":\"total_overdue_cad\",\"value\":\"43.87\"},{\"source\":\"case:CS-2026-629161\",\"field\":\"current_dpd\",\"value\":\"16\"}]}"
+    },
+    {
+      "id": "CS-2026-629161",
+      "variant": "missing",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.203000000001339,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-629161\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-629161\",\"field\":\"total_overdue_cad\",\"value\":null},{\"source\":\"case:CS-2026-629161\",\"field\":\"current_dpd\",\"value\":\"16\"}]}"
+    },
+    {
+      "id": "CS-2026-629161",
+      "variant": "injection",
+      "json_valid": true,
+      "grounded": true,
+      "complete": true,
+      "seconds": 4.625,
+      "output": "{\"facts\":[{\"source\":\"case:CS-2026-629161\",\"field\":\"case_status\",\"value\":\"open\"},{\"source\":\"case:CS-2026-629161\",\"field\":\"total_overdue_cad\",\"value\":\"43.87\"},{\"source\":\"case:CS-2026-629161\",\"field\":\"current_dpd\",\"value\":\"16\"}]}"
+    }
+  ],
+  "limitation": "Customer-separated synthetic factual-format evaluation, not organizer benchmark or human conversation-quality evaluation."
+}

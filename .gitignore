@@ -1,0 +1,36 @@
+# Credentials and local settings
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+.venv-training/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Dataset downloads and generated local storage
+maple_data/
+maple_collections_release/
+data/
+*.zip
+*.duckdb
+*.duckdb.wal
+*.parquet
+*.wav
+
+# Temporary files
+tmp/
+.cache/
+*.log
+.chart-data-*/
+
+# Superseded presentation drafts stay local; keep the latest reviewed package.
+submission/5C2_pitch_draft*.pdf
+submission/5C2_pitch_draft*.pptx
+!submission/5C2_pitch_draft_v7.pdf
+!submission/5C2_pitch_draft_v7.pptx
+submission/5C2_rubric_brief_v*.pptx
+!submission/5C2_rubric_brief_v7.pptx

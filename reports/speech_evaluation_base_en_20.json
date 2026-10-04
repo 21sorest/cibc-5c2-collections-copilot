@@ -1,0 +1,496 @@
+{
+  "model": "base.en",
+  "pretrained_not_finetuned": true,
+  "device": "cpu",
+  "compute_type": "int8",
+  "samples": [
+    {
+      "voice_sample_id": "VS-10000",
+      "case_id": "CS-2022-821260",
+      "edits": 35,
+      "reference_words": 129,
+      "wer": 0.2713178294573643,
+      "duration_sec": 135.0,
+      "inference_seconds": 4.547,
+      "real_time_factor": 0.0337,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-10038",
+      "case_id": "CS-2026-161120",
+      "edits": 25,
+      "reference_words": 156,
+      "wer": 0.16025641025641027,
+      "duration_sec": 85.0,
+      "inference_seconds": 5.25,
+      "real_time_factor": 0.0618,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-10044",
+      "case_id": "CS-2026-197000",
+      "edits": 13,
+      "reference_words": 154,
+      "wer": 0.08441558441558442,
+      "duration_sec": 82.0,
+      "inference_seconds": 5.265,
+      "real_time_factor": 0.0642,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-10054",
+      "case_id": "CS-2025-272880",
+      "edits": 26,
+      "reference_words": 224,
+      "wer": 0.11607142857142858,
+      "duration_sec": 117.0,
+      "inference_seconds": 9.609,
+      "real_time_factor": 0.0821,
+      "full_call_reference_signals": {
+        "hardship": true,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": true,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-10056",
+      "case_id": "CS-2026-942500",
+      "edits": 27,
+      "reference_words": 119,
+      "wer": 0.226890756302521,
+      "duration_sec": 65.0,
+      "inference_seconds": 4.406,
+      "real_time_factor": 0.0678,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-10057",
+      "case_id": "CS-2025-778480",
+      "edits": 24,
+      "reference_words": 153,
+      "wer": 0.1568627450980392,
+      "duration_sec": 101.0,
+      "inference_seconds": 4.734,
+      "real_time_factor": 0.0469,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-10089",
+      "case_id": "CS-2026-311760",
+      "edits": 24,
+      "reference_words": 214,
+      "wer": 0.11214953271028037,
+      "duration_sec": 113.0,
+      "inference_seconds": 6.422,
+      "real_time_factor": 0.0568,
+      "full_call_reference_signals": {
+        "hardship": true,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": true,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-1010006",
+      "case_id": "CS-2026-836922",
+      "edits": 35,
+      "reference_words": 110,
+      "wer": 0.3181818181818182,
+      "duration_sec": 82.0,
+      "inference_seconds": 4.141,
+      "real_time_factor": 0.0505,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-1010020",
+      "case_id": "CS-2026-564202",
+      "edits": 24,
+      "reference_words": 131,
+      "wer": 0.183206106870229,
+      "duration_sec": 71.0,
+      "inference_seconds": 4.359,
+      "real_time_factor": 0.0614,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-1010044",
+      "case_id": "CS-2024-602482",
+      "edits": 22,
+      "reference_words": 116,
+      "wer": 0.1896551724137931,
+      "duration_sec": 123.0,
+      "inference_seconds": 4.485,
+      "real_time_factor": 0.0365,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-1010058",
+      "case_id": "CS-2026-569962",
+      "edits": 18,
+      "reference_words": 196,
+      "wer": 0.09183673469387756,
+      "duration_sec": 169.0,
+      "inference_seconds": 6.953,
+      "real_time_factor": 0.0411,
+      "full_call_reference_signals": {
+        "hardship": true,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": true,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-1010062",
+      "case_id": "CS-2026-517142",
+      "edits": 32,
+      "reference_words": 154,
+      "wer": 0.2077922077922078,
+      "duration_sec": 84.0,
+      "inference_seconds": 5.406,
+      "real_time_factor": 0.0644,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-1010071",
+      "case_id": "CS-2026-896102",
+      "edits": 33,
+      "reference_words": 154,
+      "wer": 0.21428571428571427,
+      "duration_sec": 82.0,
+      "inference_seconds": 5.609,
+      "real_time_factor": 0.0684,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-1010079",
+      "case_id": "CS-2026-330542",
+      "edits": 30,
+      "reference_words": 139,
+      "wer": 0.2158273381294964,
+      "duration_sec": 73.0,
+      "inference_seconds": 5.235,
+      "real_time_factor": 0.0717,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-1010084",
+      "case_id": "CS-2026-760602",
+      "edits": 24,
+      "reference_words": 155,
+      "wer": 0.15483870967741936,
+      "duration_sec": 83.0,
+      "inference_seconds": 5.156,
+      "real_time_factor": 0.0621,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-1010085",
+      "case_id": "CS-2026-309162",
+      "edits": 19,
+      "reference_words": 122,
+      "wer": 0.1557377049180328,
+      "duration_sec": 128.0,
+      "inference_seconds": 5.063,
+      "real_time_factor": 0.0396,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-1010101",
+      "case_id": "CS-2026-863282",
+      "edits": 18,
+      "reference_words": 149,
+      "wer": 0.12080536912751678,
+      "duration_sec": 133.0,
+      "inference_seconds": 5.297,
+      "real_time_factor": 0.0398,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-1010107",
+      "case_id": "CS-2026-233382",
+      "edits": 32,
+      "reference_words": 107,
+      "wer": 0.29906542056074764,
+      "duration_sec": 53.0,
+      "inference_seconds": 3.75,
+      "real_time_factor": 0.0708,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-1010114",
+      "case_id": "CS-2024-714342",
+      "edits": 20,
+      "reference_words": 140,
+      "wer": 0.14285714285714285,
+      "duration_sec": 70.0,
+      "inference_seconds": 4.937,
+      "real_time_factor": 0.0705,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    },
+    {
+      "voice_sample_id": "VS-1010129",
+      "case_id": "CS-2025-379062",
+      "edits": 25,
+      "reference_words": 143,
+      "wer": 0.17482517482517482,
+      "duration_sec": 75.0,
+      "inference_seconds": 5.203,
+      "real_time_factor": 0.0694,
+      "full_call_reference_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      },
+      "full_call_asr_signals": {
+        "hardship": false,
+        "callback": false,
+        "cease": false,
+        "insolvency": false,
+        "dispute": false
+      }
+    }
+  ],
+  "aggregate_wer": 0.17065767284991568,
+  "total_seconds_including_model_load": 107.687,
+  "limitations": [
+    "English synthetic TTS sample only, not representative of real calls.",
+    "Single-channel mixed speakers have no automatic diarization. Employee must select/verify customer speech before conversation signal extraction.",
+    "Full-call signal agreement is a transcription diagnostic only, not a customer-label accuracy measure.",
+    "WER ignores punctuation/case, retains numbers as tokens. Reference script and spoken TTS may differ."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "completed_at": "2026-10-04T11:20:01.391612+00:00",
+  "tests": 114,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 13.672,
+  "modules": [
+    "test_pipeline",
+    "test_workflows",
+    "test_conversation",
+    "test_classifier_split",
+    "test_audio_cache",
+    "test_llm_grounding",
+    "test_llm_training",
+    "test_trained_llm",
+    "test_review_integrity",
+    "test_questions",
+    "test_preparation_study",
+    "test_ui",
+    "test_calls_depth",
+    "test_decisions_depth",
+    "test_qa_review",
+    "test_assistant_depth"
+  ],
+  "passed": true,
+  "scope": "Automated regression and dataset-backed local UI checks; not production readiness, hidden-test performance or business outcomes."
+}

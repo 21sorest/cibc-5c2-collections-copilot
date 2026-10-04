@@ -1,0 +1,42 @@
+{
+  "model_id": "collections-text-signals",
+  "version": "multinomial-nb-v0.1",
+  "owner": "Team 5C2",
+  "artifact": "data/models/text_classifier.json",
+  "training_command": "python train_classifier.py train",
+  "evaluation_report": "reports/classifier_evaluation.json",
+  "inputs": "Approved synthetic note text and customer turns from curated.transcripts, with case/customer identity and resolved contact provenance checks. Public label fields are targets only, never text inputs.",
+  "shared_definition": "train_classifier.tokens is called by both fit and predict; normalized/redacted unique word and adjacent-word-pair occurrences, with minimum training document frequency 2.",
+  "targets": [
+    "hardship",
+    "dispute",
+    "cease",
+    "insolvency"
+  ],
+  "positive_labels": [
+    "true",
+    "clear",
+    "possible"
+  ],
+  "split": "Connected components of shared golden customer, identical normalized/redacted text or identical complete word/bigram token signatures. SHA256 of sorted component IDs modulo 5 selects development evaluation groups.",
+  "excluded": "Missing or unapproved matching sources; resolved account/customer or transcript/contact contradictions; rows labeled as mentioning protected attributes.",
+  "allowed_uses": [
+    "Employee-reviewed financial hardship signal",
+    "Display other model flags for comparison with rules"
+  ],
+  "prohibited_uses": [
+    "Repayment risk scoring",
+    "Automatic contact permission",
+    "Legal status determination",
+    "Customer ranking by protected characteristics",
+    "Automatic payment commitments"
+  ],
+  "live_choice": "Shared review_signals uses positive hardship rules OR model score >= 0.95 without explicit hardship/affordability denial. This score threshold is an uncalibrated development safeguard, not a probability. Rare-class models do not replace stronger rules.",
+  "limitations": [
+    "Public development evaluation only",
+    "Scores are uncalibrated",
+    "Small rare-class support",
+    "Short live utterances differ from full notes/calls",
+    "No historical structured outcome training"
+  ]
+}

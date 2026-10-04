@@ -1,0 +1,204 @@
+{
+  "samples": 10,
+  "validation_passed": 10,
+  "validation_failed": 0,
+  "median_latency_seconds": 7.015499999999999,
+  "results": [
+    {
+      "case_id": "CS-2026-999995",
+      "validation_passed": true,
+      "summary": "Case status: open. [case:CS-2026-999995] Case overdue CAD: 669.24. [case:CS-2026-999995] Days past due: 25. [case:CS-2026-999995]",
+      "metadata": {
+        "prompt_version": "local-case-facts-v0.4",
+        "model_sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+        "input_sha256": "3aa710d645d2ad2ee427e57e6b8e93fbd0ea20569d4825234c52eb4234dda9e2",
+        "latency_seconds": 12.047,
+        "usage": {
+          "prompt_tokens": 249,
+          "completion_tokens": 95,
+          "total_tokens": 344
+        },
+        "pretrained_not_finetuned": true,
+        "device": "cpu",
+        "validation": "typed source/field/value equality and deterministic rendering; employee review required"
+      }
+    },
+    {
+      "case_id": "CS-2026-999985",
+      "validation_passed": true,
+      "summary": "Case status: open. [case:CS-2026-999985] Case overdue CAD: 301.47. [case:CS-2026-999985] Days past due: 8. [case:CS-2026-999985]",
+      "metadata": {
+        "prompt_version": "local-case-facts-v0.4",
+        "model_sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+        "input_sha256": "04c326a143df0f85319145bb053db64277a8945d66b562e17985b375923e412a",
+        "latency_seconds": 7.562,
+        "usage": {
+          "prompt_tokens": 248,
+          "completion_tokens": 94,
+          "total_tokens": 342
+        },
+        "pretrained_not_finetuned": true,
+        "device": "cpu",
+        "validation": "typed source/field/value equality and deterministic rendering; employee review required"
+      }
+    },
+    {
+      "case_id": "CS-2026-999982",
+      "validation_passed": true,
+      "summary": "Case status: open. [case:CS-2026-999982] Case overdue CAD: 19.08. [case:CS-2026-999982] Days past due: 13. [case:CS-2026-999982]",
+      "metadata": {
+        "prompt_version": "local-case-facts-v0.4",
+        "model_sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+        "input_sha256": "1e5a4fc9f44ecb7ef7c3e66a28175cb862b18dbb4061c28714a6672b9a2c3701",
+        "latency_seconds": 6.875,
+        "usage": {
+          "prompt_tokens": 248,
+          "completion_tokens": 94,
+          "total_tokens": 342
+        },
+        "pretrained_not_finetuned": true,
+        "device": "cpu",
+        "validation": "typed source/field/value equality and deterministic rendering; employee review required"
+      }
+    },
+    {
+      "case_id": "CS-2026-999969",
+      "validation_passed": true,
+      "summary": "Case status: open. [case:CS-2026-999969] Case overdue CAD: 4789.94. [case:CS-2026-999969] Days past due: 118. [case:CS-2026-999969]",
+      "metadata": {
+        "prompt_version": "local-case-facts-v0.4",
+        "model_sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+        "input_sha256": "6775506bbb35a9d0c4413790a2151615ea49d24141070028c70d034a0cb3b652",
+        "latency_seconds": 7.219,
+        "usage": {
+          "prompt_tokens": 251,
+          "completion_tokens": 97,
+          "total_tokens": 348
+        },
+        "pretrained_not_finetuned": true,
+        "device": "cpu",
+        "validation": "typed source/field/value equality and deterministic rendering; employee review required"
+      }
+    },
+    {
+      "case_id": "CS-2026-999964",
+      "validation_passed": true,
+      "summary": "Case status: open. [case:CS-2026-999964] Case overdue CAD: 70.04. [case:CS-2026-999964] Days past due: 17. [case:CS-2026-999964]",
+      "metadata": {
+        "prompt_version": "local-case-facts-v0.4",
+        "model_sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+        "input_sha256": "6ed670df09b65eca013891b7a6c0b0605c4d68f28e0f9881c42cc2821348ede3",
+        "latency_seconds": 6.844,
+        "usage": {
+          "prompt_tokens": 248,
+          "completion_tokens": 94,
+          "total_tokens": 342
+        },
+        "pretrained_not_finetuned": true,
+        "device": "cpu",
+        "validation": "typed source/field/value equality and deterministic rendering; employee review required"
+      }
+    },
+    {
+      "case_id": "CS-2026-999950",
+      "validation_passed": true,
+      "summary": "Case status: open. [case:CS-2026-999950] Case overdue CAD: 215.84. [case:CS-2026-999950] Days past due: 3. [case:CS-2026-999950]",
+      "metadata": {
+        "prompt_version": "local-case-facts-v0.4",
+        "model_sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+        "input_sha256": "0ddd64c7b19b1dade144a17e841018e8ff7967623ef03d6b44866d5946f295ea",
+        "latency_seconds": 7.11,
+        "usage": {
+          "prompt_tokens": 248,
+          "completion_tokens": 94,
+          "total_tokens": 342
+        },
+        "pretrained_not_finetuned": true,
+        "device": "cpu",
+        "validation": "typed source/field/value equality and deterministic rendering; employee review required"
+      }
+    },
+    {
+      "case_id": "CS-2026-999947",
+      "validation_passed": true,
+      "summary": "Case status: open. [case:CS-2026-999947] Case overdue CAD: 358.64. [case:CS-2026-999947] Days past due: 59. [case:CS-2026-999947]",
+      "metadata": {
+        "prompt_version": "local-case-facts-v0.4",
+        "model_sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+        "input_sha256": "90ac45446488203f2e6d2f082e4f56435160308d6d5ac2e3e8ff664d5b381585",
+        "latency_seconds": 6.875,
+        "usage": {
+          "prompt_tokens": 251,
+          "completion_tokens": 95,
+          "total_tokens": 346
+        },
+        "pretrained_not_finetuned": true,
+        "device": "cpu",
+        "validation": "typed source/field/value equality and deterministic rendering; employee review required"
+      }
+    },
+    {
+      "case_id": "CS-2026-999928",
+      "validation_passed": true,
+      "summary": "Case status: open. [case:CS-2026-999928] Case overdue CAD: 1444.29. [case:CS-2026-999928] Days past due: 67. [case:CS-2026-999928]",
+      "metadata": {
+        "prompt_version": "local-case-facts-v0.4",
+        "model_sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+        "input_sha256": "55b2f92eb17d05dcc19a2d083c0e0a23d6025fdc2c42b7e1449f71b15bc8758c",
+        "latency_seconds": 7.109,
+        "usage": {
+          "prompt_tokens": 250,
+          "completion_tokens": 96,
+          "total_tokens": 346
+        },
+        "pretrained_not_finetuned": true,
+        "device": "cpu",
+        "validation": "typed source/field/value equality and deterministic rendering; employee review required"
+      }
+    },
+    {
+      "case_id": "CS-2026-999919",
+      "validation_passed": true,
+      "summary": "Case status: open. [case:CS-2026-999919] Case overdue CAD: 196.44. [case:CS-2026-999919] Days past due: 79. [case:CS-2026-999919]",
+      "metadata": {
+        "prompt_version": "local-case-facts-v0.4",
+        "model_sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+        "input_sha256": "dc06fdbdd3b30e4b22f17a28d46fbea812752c24d8708aaf198117b1abf39561",
+        "latency_seconds": 6.922,
+        "usage": {
+          "prompt_tokens": 249,
+          "completion_tokens": 95,
+          "total_tokens": 344
+        },
+        "pretrained_not_finetuned": true,
+        "device": "cpu",
+        "validation": "typed source/field/value equality and deterministic rendering; employee review required"
+      }
+    },
+    {
+      "case_id": "CS-2026-999918",
+      "validation_passed": true,
+      "summary": "Case status: open. [case:CS-2026-999918] Case overdue CAD: 52.50. [case:CS-2026-999918] Days past due: 13. [case:CS-2026-999918]",
+      "metadata": {
+        "prompt_version": "local-case-facts-v0.4",
+        "model_sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+        "input_sha256": "c9ebae2361d3799e4e37c98a67dedf9e1bfd976aa897fe1b3943a2c14e6ca074",
+        "latency_seconds": 6.625,
+        "usage": {
+          "prompt_tokens": 248,
+          "completion_tokens": 94,
+          "total_tokens": 342
+        },
+        "pretrained_not_finetuned": true,
+        "device": "cpu",
+        "validation": "typed source/field/value equality and deterministic rendering; employee review required"
+      }
+    }
+  ],
+  "limitations": [
+    "Typed source/field/value equality validates selected facts; it does not establish summary completeness.",
+    "Deterministically selected current cases, not a blind benchmark. Human summary evaluation remains pending.",
+    "Small pretrained CPU language model, not trained by the team. The separate classifier is locally trained.",
+    "Free-form model text is rejected. Only verified source fields enter deterministic sentences. This is development, not blind evaluation."
+  ]
+}
