@@ -1,26 +1,26 @@
 {
   "files": {
-    "submission\\5C2_pitch_draft_v6.pdf": {
-      "bytes": 902788,
-      "sha256": "c8cf2dafb914e03832a175ce787dbcdca2e2f2969d9a61b0705e8ee651391e19"
+    "submission/5C2_pitch_draft_v7.pdf": {
+      "bytes": 901577,
+      "sha256": "645d7a3aaa7e4fe87612f7a77bd52bb0c9db788cc8d595c54db8e59aa234759b"
     },
-    "submission\\5C2_pitch_draft_v6.pptx": {
-      "bytes": 37666,
-      "sha256": "4809dca264c675566576bb2d79bc6c28f6001b21c52a4b1327e593d6f5f637ff"
+    "submission/5C2_pitch_draft_v7.pptx": {
+      "bytes": 37656,
+      "sha256": "691fabd6e56dab8385ac5293f94ba620402b15892d4ceead3bf9daf8362c75a3"
     },
-    "submission\\5C2_rubric_brief.pdf": {
-      "bytes": 710945,
-      "sha256": "13b052aa596af131e586a84e6e22d1e31c39d89fd0bf3fd63700a1dc6a8fc8c0"
+    "submission/5C2_rubric_brief.pdf": {
+      "bytes": 711019,
+      "sha256": "19e897046d060ce8897ffbddb355215f7a94c4e59e7feab4d6f67bc959d236cb"
     },
-    "submission\\5C2_rubric_brief_v6.pptx": {
-      "bytes": 27778,
-      "sha256": "89e879f5b67229a6762e402f88f59dd8c7eda165f1c3355f2d79dea850c6193a"
+    "submission/5C2_rubric_brief_v7.pptx": {
+      "bytes": 27784,
+      "sha256": "bd03925781ff3d5e6084cd3fd6a90756a73c0940a436d6ae6fe03e37cef23190"
     }
   },
   "pdf_pages": {
     "pitch": 9,
     "rubric_brief": 6
   },
-  "visual_review": "Changed pitch slide8 and rubric slides3/5 inspected individually; other renders byte-identical to previously inspected v5 slides.",
+  "visual_review": "Changed pitch slides8/9 and rubric slide5 inspected. Final presentation review remains required; pitch slide9 long title and rubric lower text spacing need final polish. Other slides retain preceding layout.",
   "native_powerpoint_execution_tested": false
 }
